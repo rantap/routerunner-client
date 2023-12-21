@@ -1,10 +1,9 @@
-import RouteMap from '../components/RouteMap';
+import Map from '../components/Map';
 
 const Home = () => {
   return (
     <>
-      <h1>haist home</h1>
-      <RouteMap />
+      <Map />
     </>
   );
 };

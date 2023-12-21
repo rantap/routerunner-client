@@ -3,6 +3,7 @@ import maplibregl, { StyleSpecification } from 'maplibre-gl';
 import MapLibreGlDirections from '@maplibre/maplibre-gl-directions';
 import 'maplibre-gl/dist/maplibre-gl.css';
 
+const token = import.meta.env.VITE_MAPBOX_TOKEN;
 const style: StyleSpecification = {
   version: 8,
   sources: {
@@ -11,7 +12,7 @@ const style: StyleSpecification = {
       tiles: ['https://tile.openstreetmap.org/{z}/{x}/{y}.png'],
       tileSize: 256,
       attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        '<a href="https://www.mapbox.com/about/maps/">&copy; Mapbox</a>&nbsp; <a href="https://www.openstreetmap.org/copyright">&copy; OpenStreetMap contributors</a>',
     },
   },
   layers: [
@@ -24,7 +25,7 @@ const style: StyleSpecification = {
     },
   ],
 };
-const RouteMap: React.FC = () => {
+const Map: React.FC = () => {
   const mapRef = useRef<HTMLDivElement | null>(null);
   const [directions, setDirections] = useState<MapLibreGlDirections | null>(null);
 
@@ -34,15 +35,15 @@ const RouteMap: React.FC = () => {
       style: style,
       center: [23.8485436, 61.4508978],
       zoom: 13,
-      customAttribution: "<a href='http://project-osrm.org/' target='_blank'>&copy; OSRM</a>",
     });
 
     map.on('load', () => {
       setDirections(
         new MapLibreGlDirections(map, {
-          profile: 'foot',
+          api: 'https://api.mapbox.com/directions/v5',
+          profile: 'mapbox/walking',
           requestOptions: {
-            alternatives: 'true',
+            access_token: token,
           },
         }),
       );
@@ -67,4 +68,4 @@ const RouteMap: React.FC = () => {
   );
 };
 
-export default RouteMap;
+export default Map;
