@@ -1,7 +1,9 @@
-import Map, { MapStyle } from 'react-map-gl/maplibre';
+import React, { useEffect, useState, useRef } from 'react';
+import maplibregl, { StyleSpecification } from 'maplibre-gl';
+import MapLibreGlDirections from '@maplibre/maplibre-gl-directions';
 import 'maplibre-gl/dist/maplibre-gl.css';
 
-const style: MapStyle = {
+const style: StyleSpecification = {
   version: 8,
   sources: {
     'raster-tiles': {
@@ -22,18 +24,46 @@ const style: MapStyle = {
     },
   ],
 };
+const RouteMap: React.FC = () => {
+  const mapRef = useRef<HTMLDivElement | null>(null);
+  const [directions, setDirections] = useState<MapLibreGlDirections | null>(null);
 
-const RouteMap = () => {
+  useEffect(() => {
+    const map = new maplibregl.Map({
+      container: mapRef.current as HTMLDivElement,
+      style: style,
+      center: [23.8485436, 61.4508978],
+      zoom: 13,
+      customAttribution: "<a href='http://project-osrm.org/' target='_blank'>&copy; OSRM</a>",
+    });
+
+    map.on('load', () => {
+      setDirections(
+        new MapLibreGlDirections(map, {
+          profile: 'foot',
+          requestOptions: {
+            alternatives: 'true',
+          },
+        }),
+      );
+    });
+
+    return () => {
+      if (directions) directions.destroy();
+      if (map) map.remove();
+    };
+  }, []); // Empty dependency array to ensure the effect runs only on mount
+
+  useEffect(() => {
+    if (directions) {
+      directions.interactive = true;
+    }
+  }, [directions]);
+
   return (
-    <Map
-      initialViewState={{
-        longitude: 23.8485436,
-        latitude: 61.4508978,
-        zoom: 14,
-      }}
-      style={{ width: '100%', height: ' 50vh ' }}
-      mapStyle={style}
-    />
+    <>
+      <div ref={mapRef} className='h-[50vh]' />
+    </>
   );
 };
 
