@@ -4,7 +4,7 @@ import MapLibreGlDirections from '@maplibre/maplibre-gl-directions';
 import 'maplibre-gl/dist/maplibre-gl.css';
 
 const token = import.meta.env.VITE_MAPBOX_TOKEN;
-const style: StyleSpecification = {
+const mapStyle: StyleSpecification = {
   version: 8,
   sources: {
     'raster-tiles': {
@@ -32,10 +32,12 @@ const Map: React.FC = () => {
   useEffect(() => {
     const map = new maplibregl.Map({
       container: mapRef.current as HTMLDivElement,
-      style: style,
+      style: mapStyle,
       center: [23.8485436, 61.4508978],
       zoom: 13,
     });
+
+    map.addControl(new maplibregl.NavigationControl());
 
     map.on('load', () => {
       setDirections(
@@ -48,11 +50,6 @@ const Map: React.FC = () => {
         }),
       );
     });
-
-    return () => {
-      if (directions) directions.destroy();
-      if (map) map.remove();
-    };
   }, []); // Empty dependency array to ensure the effect runs only on mount
 
   useEffect(() => {
