@@ -27,7 +27,8 @@ const mapStyle: StyleSpecification = {
 };
 const Map: React.FC = () => {
   const mapRef = useRef<HTMLDivElement | null>(null);
-  const [directions, setDirections] = useState<MapLibreGlDirections | null>(null);
+  // const [directions, setDirections] = useState<MapLibreGlDirections | null>(null);
+  const [totalDistance, setTotalDistance] = useState<number>(0);
 
   useEffect(() => {
     const map = new maplibregl.Map({
@@ -40,26 +41,28 @@ const Map: React.FC = () => {
     map.addControl(new maplibregl.NavigationControl());
 
     map.on('load', () => {
-      setDirections(
-        new MapLibreGlDirections(map, {
-          api: 'https://api.mapbox.com/directions/v5',
-          profile: 'mapbox/walking',
-          requestOptions: {
-            access_token: token,
-          },
-        }),
-      );
+      const directions = new MapLibreGlDirections(map, {
+        api: 'https://api.mapbox.com/directions/v5',
+        profile: 'mapbox/walking',
+        requestOptions: {
+          access_token: token,
+        },
+      });
+      directions.on('fetchroutesend', (ev) => {
+        setTotalDistance(ev.data?.routes[0].distance as number);
+      });
+      directions.on('removewaypoint', () => {
+        if (directions.waypoints.length < 2) {
+          setTotalDistance(0);
+        }
+      });
+      directions.interactive = true;
     });
   }, []); // Empty dependency array to ensure the effect runs only on mount
 
-  useEffect(() => {
-    if (directions) {
-      directions.interactive = true;
-    }
-  }, [directions]);
-
   return (
     <>
+      <h1>Total distance: {Math.trunc(totalDistance)} m</h1>
       <div ref={mapRef} className='h-[50vh]' />
     </>
   );
