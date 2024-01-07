@@ -32,14 +32,14 @@ const Navbar = () => {
         <NavLink
           to='/'
           onClick={toggleDrawer}
-          className='block py-2 px-4 border-b-2 border-zinc-800 hover:text-green-300 hover:border-b-2 hover:border-green-300 sm:py-6 sm:font-semibold'
+          className='block py-2 px-4 hover:text-green-300 sm:mt-0 sm:py-6 sm:font-semibold sm:border-b-2 sm:border-zinc-800 sm:hover:border-b-2 sm:hover:border-green-300'
         >
           Create a route
         </NavLink>
         <NavLink
           to='/workouts'
           onClick={toggleDrawer}
-          className='block mt-1 py-2 px-4 rounded hover:text-green-300 sm:mt-0 sm:py-6 sm:font-semibold'
+          className='block mt-1 py-2 px-4 hover:text-green-300 sm:mt-0 sm:py-6 sm:font-semibold sm:border-b-2 sm:border-zinc-800 sm:hover:border-b-2 sm:hover:border-green-300'
         >
           Your workouts
         </NavLink>
