@@ -12,39 +12,38 @@ const Navbar = () => {
   };
 
   return (
-    <nav className='bg-gray-700'>
-      <div className='flex items-center justify-between px-4 py-3'>
-        <div>
-          <h3>Routerunner</h3>
-        </div>
-        <div>
+    <nav className='sticky top-0 left-0 w-screen z-50 bg-zinc-800 drop-shadow-lg text-slate-100 sm:h-20 sm:flex sm:items-center'>
+      <div className='flex p-4 items-center justify-between'>
+        <h1 className='text-3xl font-bold tracking-tighter sm:ml-4'>Routerunner</h1>
+        <div className='sm:hidden'>
           <ToggleButton
-            className='text-3xl cursor-pointer mx-2 md:hidden block'
+            className='text-3xl m-2 cursor-pointer sm:hover:text-green-300'
             onChange={toggleDrawer}
           >
-            {!isOpen ? <Bars2Icon className='h-10 w-10' /> : <XMarkIcon className='h-10 w-10' />}
+            {!isOpen ? <Bars2Icon className='h-10 w-10 ' /> : <XMarkIcon className='h-10 w-10' />}
           </ToggleButton>
         </div>
       </div>
-
-      {isOpen && (
-        <div className='px-4 pt-2 pb-4'>
-          <NavLink
-            to='/'
-            onClick={toggleDrawer}
-            className='block px-2 py-1 rounded hover:bg-gray-800'
-          >
-            Create a route
-          </NavLink>
-          <NavLink
-            to='/workouts'
-            onClick={toggleDrawer}
-            className='mt-1 px-2 py-1 rounded block hover:bg-gray-800'
-          >
-            Workouts
-          </NavLink>
-        </div>
-      )}
+      <div
+        className={`${
+          isOpen ? 'block' : 'hidden'
+        } fixed w-9/12 h-screen bg-zinc-800 sm:flex sm:h-fit sm:static sm:ml-4`}
+      >
+        <NavLink
+          to='/'
+          onClick={toggleDrawer}
+          className='block py-2 px-4 border-b-2 border-zinc-800 hover:text-green-300 hover:border-b-2 hover:border-green-300 sm:py-6 sm:font-semibold'
+        >
+          Create a route
+        </NavLink>
+        <NavLink
+          to='/workouts'
+          onClick={toggleDrawer}
+          className='block mt-1 py-2 px-4 rounded hover:text-green-300 sm:mt-0 sm:py-6 sm:font-semibold'
+        >
+          Your workouts
+        </NavLink>
+      </div>
     </nav>
   );
 };
