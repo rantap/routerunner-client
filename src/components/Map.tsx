@@ -1,34 +1,19 @@
 import React, { useEffect, useState, useRef } from 'react';
-import maplibregl, { StyleSpecification } from 'maplibre-gl';
+import maplibregl from 'maplibre-gl';
 import MapLibreGlDirections from '@maplibre/maplibre-gl-directions';
+import mapStyle from '../assets/styles/mapStyle';
 import 'maplibre-gl/dist/maplibre-gl.css';
+import { MapLibreSearchControl } from '@stadiamaps/maplibre-search-box';
+import '@stadiamaps/maplibre-search-box/dist/style.css';
 
 const token = import.meta.env.VITE_MAPBOX_TOKEN;
-const mapStyle: StyleSpecification = {
-  version: 8,
-  sources: {
-    'raster-tiles': {
-      type: 'raster',
-      tiles: ['https://tile.openstreetmap.org/{z}/{x}/{y}.png'],
-      tileSize: 256,
-      attribution:
-        '<a href="https://www.mapbox.com/about/maps/">&copy; Mapbox</a>&nbsp; <a href="https://www.openstreetmap.org/copyright">&copy; OpenStreetMap contributors</a>',
-    },
-  },
-  layers: [
-    {
-      id: 'simple-tiles',
-      type: 'raster',
-      source: 'raster-tiles',
-      minzoom: 0,
-      maxzoom: 22,
-    },
-  ],
-};
+
 const Map: React.FC = () => {
   const mapRef = useRef<HTMLDivElement | null>(null);
-  // const [directions, setDirections] = useState<MapLibreGlDirections | null>(null);
   const [totalDistance, setTotalDistance] = useState<number>(0);
+  const searchControl = new MapLibreSearchControl({
+    baseUrl: 'https://api-eu.stadiamaps.com',
+  });
 
   useEffect(() => {
     const map = new maplibregl.Map({
@@ -36,9 +21,12 @@ const Map: React.FC = () => {
       style: mapStyle,
       center: [23.8485436, 61.4508978],
       zoom: 13,
+      pitch: 30,
     });
 
     map.addControl(new maplibregl.NavigationControl());
+
+    map.addControl(searchControl, 'top-left');
 
     map.on('load', () => {
       const directions = new MapLibreGlDirections(map, {
@@ -62,8 +50,10 @@ const Map: React.FC = () => {
 
   return (
     <>
-      <h1>Total distance: {Math.trunc(totalDistance)} m</h1>
-      <div ref={mapRef} className='h-[50vh]' />
+      <h1 className='absolute z-10 px-3 py-1 mx-2 bg-zinc-900 opacity-80 rounded-b-md text-slate-100 font-light'>
+        Total distance: {Math.trunc(totalDistance)} m
+      </h1>
+      <div ref={mapRef} className='h-[65vh] z-0' />
     </>
   );
 };
