@@ -10,11 +10,14 @@ const Navbar = () => {
   const toggleDrawer = () => {
     setIsOpen((open) => !open);
   };
+  const closeDrawer = () => {
+    setIsOpen(false);
+  };
 
   return (
     <nav className='sticky top-0 left-0 w-screen z-50 bg-zinc-800 drop-shadow-lg text-slate-100 sm:h-20 sm:flex sm:items-center'>
       <div className='flex p-4 items-center justify-between'>
-        <h1 className='text-3xl font-bold tracking-tighter sm:ml-4'>Routerunner</h1>
+        <h1 className='ml-2 text-3xl font-bold tracking-tighter sm:ml-4'>Routerunner</h1>
         <div className='sm:hidden'>
           <ToggleButton
             className='text-3xl m-2 cursor-pointer sm:hover:text-green-300'
@@ -31,14 +34,14 @@ const Navbar = () => {
       >
         <NavLink
           to='/'
-          onClick={toggleDrawer}
+          onClick={closeDrawer}
           className='block py-2 px-4 hover:text-green-300 sm:mt-0 sm:py-6 sm:font-semibold sm:border-b-2 sm:border-zinc-800 sm:hover:border-b-2 sm:hover:border-green-300'
         >
           Create a route
         </NavLink>
         <NavLink
           to='/workouts'
-          onClick={toggleDrawer}
+          onClick={closeDrawer}
           className='block mt-1 py-2 px-4 hover:text-green-300 sm:mt-0 sm:py-6 sm:font-semibold sm:border-b-2 sm:border-zinc-800 sm:hover:border-b-2 sm:hover:border-green-300'
         >
           Your workouts
