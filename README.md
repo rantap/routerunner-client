@@ -4,10 +4,11 @@
 
 Plan your running/walking routes and add them to your workout log (under construction)
 
-## Tech
+## Tech stack
 
 - TypeScript
 - React
+- React Aria Components
 - Tailwind CSS
 - MapLibre
 
