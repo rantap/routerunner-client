@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Button } from 'react-aria-components';
 import { ChevronUpIcon } from '@heroicons/react/24/solid';
 import { ChevronDownIcon } from '@heroicons/react/24/solid';
+import { formatDuration } from '../utils/formatDuration';
 
 interface Workout {
   id: number;
@@ -28,24 +29,30 @@ const WorkoutCard = ({ type, date, length, time }: Workout) => {
         onClick={() => setExpanded(!isExpanded)}
       >
         {isExpanded ? (
-          <ChevronUpIcon className='mt-1 h-5 w-5 transition-all duration-300 ease-in' />
+          <ChevronUpIcon className='mt-1 h-5 w-5' />
         ) : (
-          <ChevronDownIcon className='mt-1 h-5 w-5 animation-spin' />
+          <ChevronDownIcon className='mt-1 h-5 w-5' />
         )}
         <p>{type}</p>
         <p>{length} km</p>
-        <p>{new Date(time * 1000).toISOString().slice(11, 19)}</p>
+        <p>{formatDuration(time)}</p>
       </div>
-      {isExpanded && (
-        <div className='flex justify-center transition duration-1000 ease-in-out'>
-          <Button className='mt-4 py-2 px-6 mr-4 bg-red-400 text-black rounded-full transition ease-in-out hover:scale-105 hover:bg-red-500 duration-300'>
-            Delete
-          </Button>
-          <Button className='mt-4 py-2 px-6 bg-yellow-300 text-black rounded-full transition ease-in-out hover:scale-105 hover:bg-yellow-400 duration-300'>
-            Edit
-          </Button>
-        </div>
-      )}
+      <div
+        className={`${
+          isExpanded ? 'opacity-100' : 'opacity-0'
+        } transition-opacity ease-linear duration-500`}
+      >
+        {isExpanded && (
+          <div className='flex justify-center mx-8 sm:mx-16'>
+            <Button className='w-full mt-4 py-2 px-6 mr-4 bg-red-400 text-black rounded-full transition ease-in-out hover:scale-105 hover:bg-red-500 duration-300'>
+              Delete
+            </Button>
+            <Button className='w-full mt-4 py-2 px-6 bg-yellow-300 text-black rounded-full transition ease-in-out hover:scale-105 hover:bg-yellow-400 duration-300'>
+              Edit
+            </Button>
+          </div>
+        )}
+      </div>
     </>
   );
 };
