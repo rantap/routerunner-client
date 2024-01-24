@@ -30,7 +30,10 @@ const AddWorkoutForm = () => {
           <Input className='mt-1 p-1 rounded w-full' />
           <FieldError className='text-red-500' />
         </TextField>
-        <Button className='flex mt-8 px-8 py-2  bg-green-300 rounded mx-auto' type='submit'>
+        <Button
+          className='flex mt-8 px-8 py-2 bg-green-300 rounded-full mx-auto transition ease-in-out hover:scale-105 hover:bg-green-400 duration-300'
+          type='submit'
+        >
           + Add workout
         </Button>
       </Form>
