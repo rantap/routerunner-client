@@ -1,9 +1,9 @@
 import Map from '../components/Map';
 
-const Home = () => {
+const Routeplanner = () => {
   return (
     <>
-      <h1 className='m-4 text-center text-slate-100 text-xl font-bold tracking-tighter'>
+      <h1 className='m-6 text-center text-slate-100 text-xl font-bold tracking-tighter'>
         Create a route
       </h1>
       <p className='mx-6 mb-6 text-center text-slate-100'>
@@ -14,4 +14,4 @@ const Home = () => {
     </>
   );
 };
-export default Home;
+export default Routeplanner;
