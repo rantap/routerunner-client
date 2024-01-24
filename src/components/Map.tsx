@@ -5,6 +5,7 @@ import mapStyle from '../assets/styles/mapStyle';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { MapLibreSearchControl } from '@stadiamaps/maplibre-search-box';
 import '@stadiamaps/maplibre-search-box/dist/style.css';
+import { formatDistance } from '../utils/formatDistance';
 
 const token = import.meta.env.VITE_MAPBOX_TOKEN;
 
@@ -51,7 +52,7 @@ const Map: React.FC = () => {
   return (
     <>
       <h1 className='absolute z-10 px-3 py-1 mx-2 bg-zinc-900 opacity-80 rounded-b-md text-slate-100 font-light'>
-        Total distance: {Math.trunc(totalDistance)} m
+        Total distance: {formatDistance(totalDistance)}
       </h1>
       <div ref={mapRef} className='h-[65vh] z-0' />
     </>
