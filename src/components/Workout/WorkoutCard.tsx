@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Button } from 'react-aria-components';
 import { ChevronUpIcon } from '@heroicons/react/24/solid';
 import { ChevronDownIcon } from '@heroicons/react/24/solid';
-import { formatDuration } from '../utils/formatDuration';
+import { formatDuration } from '../../utils/formatDuration';
 
 interface Workout {
   id: number;
@@ -43,7 +43,7 @@ const WorkoutCard = ({ type, date, length, time }: Workout) => {
         } transition-opacity ease-linear duration-500`}
       >
         {isExpanded && (
-          <div className='flex justify-center mx-8 sm:mx-16'>
+          <div className='flex justify-center mx-8 lg:mx-16 xl:mx-32'>
             <Button className='w-full mt-4 py-2 px-6 mr-4 bg-red-400 text-black rounded-full transition ease-in-out hover:scale-105 hover:bg-red-500 duration-300'>
               Delete
             </Button>

@@ -1,4 +1,13 @@
+//import { useFetch } from '../../hooks/useFetch';
 import WorkoutCard from './WorkoutCard';
+
+interface Workout {
+  id: number;
+  type: string;
+  date: string;
+  length: string;
+  time: number;
+}
 
 const WorkoutList = () => {
   const workouts = [
@@ -24,10 +33,14 @@ const WorkoutList = () => {
       time: 2400,
     },
   ];
+  /* const { data, loading, error } = useFetch<Workout[]>('http://localhost:3001/workouts');
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error</p>; */
 
   return (
     <>
-      {workouts.map((workout) => (
+      {workouts?.map((workout: Workout) => (
         <WorkoutCard
           key={workout.id}
           id={workout.id}

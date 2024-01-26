@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react';
 import maplibregl from 'maplibre-gl';
 import MapLibreGlDirections from '@maplibre/maplibre-gl-directions';
-import mapStyle from '../assets/styles/mapStyle';
+import mapStyle from '../../assets/styles/mapStyle';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { MapLibreSearchControl } from '@stadiamaps/maplibre-search-box';
 import '@stadiamaps/maplibre-search-box/dist/style.css';
-import { formatDistance } from '../utils/formatDistance';
+import { formatDistance } from '../../utils/formatDistance';
 
 const token = import.meta.env.VITE_MAPBOX_TOKEN;
 
