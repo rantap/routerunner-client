@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Workouts from './pages/Workouts';
 import Routeplanner from './pages/Routeplanner';
-import Navbar from './components/Navbar';
+import Navbar from './components/Header/Navbar';
 
 const App = () => {
   return (
