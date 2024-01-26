@@ -1,9 +1,9 @@
-import Map from '../components/Map';
+import Map from '../components/Map/Map';
 
 const Routeplanner = () => {
   return (
     <>
-      <h1 className='m-6 text-center text-slate-100 text-xl font-bold tracking-tighter'>
+      <h1 className='m-6 text-center text-slate-100 text-2xl font-bold tracking-tighter'>
         Create a route
       </h1>
       <p className='mx-6 mb-6 text-center text-slate-100'>

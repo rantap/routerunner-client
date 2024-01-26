@@ -1,23 +1,23 @@
-import AddWorkoutForm from '../components/AddWorkoutForm';
-import WorkoutList from '../components/WorkoutList';
-import WorkoutModal from '../components/WorkoutModal';
+import AddWorkoutForm from '../components/Workout/Forms/AddWorkoutForm';
+import WorkoutModal from '../components/Workout/WorkoutModal';
+import WorkoutTabs from '../components/Workout/WorkoutTabs';
 
 const Workouts = () => {
   return (
     <div className='mb-10'>
       <div>
-        <h1 className='mt-6 text-center text-slate-100 text-xl font-bold tracking-tighter'>
+        <h1 className='mt-6 text-center text-slate-100 text-2xl font-bold tracking-tighter'>
           Your workouts
         </h1>
       </div>
-      <div className='mt-4 flex justify-center sm:hidden'>
+      <div className='flex justify-center sm:hidden'>
         <WorkoutModal />
       </div>
-      <div className='flex flex-wrap mt-4'>
+      <div className='flex flex-wrap'>
         <div className='mx-auto mt-4 w-5/6 sm:w-2/5'>
-          <WorkoutList />
+          <WorkoutTabs />
         </div>
-        <div className='hidden mx-auto mt-10 w-5/6 sm:w-2/5 sm:block'>
+        <div className='hidden mx-auto mt-8 w-5/6 sm:w-2/5 sm:block'>
           <AddWorkoutForm />
         </div>
       </div>
