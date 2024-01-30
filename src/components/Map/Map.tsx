@@ -50,12 +50,14 @@ const Map: React.FC = () => {
   }, []); // Empty dependency array to ensure the effect runs only on mount
 
   return (
-    <>
-      <h1 className='absolute z-10 px-3 py-1 mx-2 bg-zinc-900 opacity-80 rounded-b-md text-slate-100 font-light'>
-        Total distance: {formatDistance(totalDistance)}
-      </h1>
-      <div ref={mapRef} className='h-[65vh] z-0' />
-    </>
+    <div className='xl:flex'>
+      <div className='xl:w-4/5 m-auto'>
+        <h1 className='absolute z-10 px-3 py-1 mx-2 bg-zinc-900 opacity-80 rounded-b-md text-slate-100 font-light'>
+          Total distance: {formatDistance(totalDistance)}
+        </h1>
+        <div ref={mapRef} className='h-[65vh] rounded-xl z-0' />
+      </div>
+    </div>
   );
 };
 
