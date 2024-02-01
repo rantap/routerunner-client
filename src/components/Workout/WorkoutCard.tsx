@@ -3,21 +3,18 @@ import { Button } from 'react-aria-components';
 import { ChevronUpIcon } from '@heroicons/react/24/solid';
 import { ChevronDownIcon } from '@heroicons/react/24/solid';
 import { formatDuration } from '../../utils/formatDuration';
+import { Workout } from '../../types';
 
-interface Workout {
-  id: number;
-  type: string;
-  date: string;
-  length: string;
-  time: number;
+interface Props {
+  workout: Workout;
 }
-const WorkoutCard = ({ type, date, length, time }: Workout) => {
+const WorkoutCard = ({ workout }: Props) => {
   const [isExpanded, setExpanded] = useState(false);
 
   return (
     <>
       <p className='text-slate-100 text-sm mt-6'>
-        {new Date(date).toLocaleDateString('en-EN', {
+        {new Date(workout.date).toLocaleDateString('en-EN', {
           weekday: 'long',
           year: 'numeric',
           month: 'long',
@@ -33,9 +30,9 @@ const WorkoutCard = ({ type, date, length, time }: Workout) => {
         ) : (
           <ChevronDownIcon className='mt-1 h-5 w-5' />
         )}
-        <p>{type}</p>
-        <p>{length} km</p>
-        <p>{formatDuration(time)}</p>
+        <p>{workout.type}</p>
+        <p>{workout.distance} km</p>
+        <p>{formatDuration(workout.duration)}</p>
       </div>
       <div
         className={`${
