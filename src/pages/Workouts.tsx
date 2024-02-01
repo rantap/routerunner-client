@@ -4,7 +4,7 @@ import WorkoutTabs from '../components/Workout/WorkoutTabs';
 
 const Workouts = () => {
   return (
-    <div className='mb-10'>
+    <div className='mb-10 xl:mx-20'>
       <div>
         <h1 className='mt-6 text-center text-slate-100 text-2xl font-bold tracking-tighter'>
           Your workouts
