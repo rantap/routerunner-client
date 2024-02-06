@@ -1,16 +1,29 @@
 import { useState } from 'react';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { deleteWorkout } from '../../api/workouts';
+import { formatDuration } from '../../utils/formatDuration';
 import { Button } from 'react-aria-components';
 import { ChevronUpIcon } from '@heroicons/react/24/solid';
 import { ChevronDownIcon } from '@heroicons/react/24/solid';
-import { formatDuration } from '../../utils/formatDuration';
 import { Workout } from '../../types';
+import EditModal from './EditModal';
 
 interface Props {
   workout: Workout;
 }
 const WorkoutCard = ({ workout }: Props) => {
   const [isExpanded, setExpanded] = useState(false);
+  const queryClient = useQueryClient();
+  const mutation = useMutation({
+    mutationFn: deleteWorkout,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['workouts'] });
+    },
+  });
 
+  const handleDelete = (id: number) => {
+    mutation.mutate(id);
+  };
   return (
     <>
       <p className='text-slate-100 text-sm mt-6'>
@@ -40,12 +53,13 @@ const WorkoutCard = ({ workout }: Props) => {
         } transition-opacity ease-linear duration-500`}
       >
         {isExpanded && (
-          <div className='flex justify-center mx-8 lg:mx-16 xl:mx-32'>
-            <Button className='w-full mt-4 py-2 px-6 mr-4 bg-red-400 text-black rounded-full transition ease-in-out hover:scale-105 hover:bg-red-500 duration-300'>
+          <div className='flex justify-start mx-8 sm:mx-32 xl:mx-48'>
+            <EditModal />
+            <Button
+              onPress={() => handleDelete(workout.id)}
+              className='w-full mt-4 py-2 px-6  bg-red-400 text-black rounded-full transition ease-in-out hover:scale-105 hover:bg-red-500 duration-300'
+            >
               Delete
-            </Button>
-            <Button className='w-full mt-4 py-2 px-6 bg-yellow-300 text-black rounded-full transition ease-in-out hover:scale-105 hover:bg-yellow-400 duration-300'>
-              Edit
             </Button>
           </div>
         )}
