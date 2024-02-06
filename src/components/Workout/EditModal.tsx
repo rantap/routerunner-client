@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Button, Dialog, DialogTrigger, Modal } from 'react-aria-components';
 import { XMarkIcon } from '@heroicons/react/24/solid';
-import EditForm from './Forms/EditForm';
 
 const EditModal = () => {
   const [isOpen, setOpen] = useState(false);
@@ -23,7 +22,6 @@ const EditModal = () => {
           <Button className='absolute right-0 my-3 mx-6' onPress={() => setOpen(false)}>
             <XMarkIcon className='h-10 w-10 text-slate-100' />
           </Button>
-          <EditForm />
         </Dialog>
       </Modal>
     </DialogTrigger>
