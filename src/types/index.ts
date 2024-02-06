@@ -1,7 +1,7 @@
 export interface Workout {
   id: number;
   type: string;
-  date: string;
-  distance: string;
+  date: Date;
+  distance: number;
   duration: number;
 }
