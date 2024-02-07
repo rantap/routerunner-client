@@ -1,8 +1,14 @@
 import { useState } from 'react';
 import { Button, Dialog, DialogTrigger, Modal } from 'react-aria-components';
 import { XMarkIcon } from '@heroicons/react/24/solid';
+import EditForm from './Forms/EditForm';
+import { Workout } from '../../types';
 
-const EditModal = () => {
+interface Props {
+  workout: Workout;
+}
+
+const EditModal = ({ workout }: Props) => {
   const [isOpen, setOpen] = useState(false);
   return (
     <DialogTrigger>
@@ -22,6 +28,7 @@ const EditModal = () => {
           <Button className='absolute right-0 my-3 mx-6' onPress={() => setOpen(false)}>
             <XMarkIcon className='h-10 w-10 text-slate-100' />
           </Button>
+          <EditForm workout={workout} />
         </Dialog>
       </Modal>
     </DialogTrigger>

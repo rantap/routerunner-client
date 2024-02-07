@@ -54,7 +54,7 @@ const WorkoutCard = ({ workout }: Props) => {
       >
         {isExpanded && (
           <div className='flex justify-start mx-8 sm:mx-32 xl:mx-48'>
-            <EditModal />
+            <EditModal workout={workout} />
             <Button
               onPress={() => handleDelete(workout.id)}
               className='w-full mt-4 py-2 px-6  bg-red-400 text-black rounded-full transition ease-in-out hover:scale-105 hover:bg-red-500 duration-300'
