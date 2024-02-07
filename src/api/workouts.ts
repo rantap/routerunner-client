@@ -22,3 +22,9 @@ export const deleteWorkout = async (id: number) => {
 
   return workout;
 };
+export const editWorkout = async (id: number, data: Workout) => {
+  const response = await axios.put(`${BASE_URL}/workouts/${id}`, data);
+  const workout = response.data;
+
+  return workout;
+};
