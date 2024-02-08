@@ -14,7 +14,7 @@ const EditModal = ({ workout }: Props) => {
     <DialogTrigger>
       <Button
         onPress={() => setOpen(true)}
-        className='mt-4 p-4 mr-4 bg-yellow-300 text-black rounded-full transition ease-in-out hover:scale-105 hover:bg-yellow-400 duration-300'
+        className='mb-4 p-4 mr-4 bg-yellow-300 text-black rounded-full transition ease-in-out hover:scale-105 hover:bg-yellow-400 duration-300'
       >
         <PencilSquareIcon className='mx-auto h-5 w-5' />
       </Button>

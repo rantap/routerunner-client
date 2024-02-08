@@ -25,39 +25,41 @@ const WorkoutCard = ({ workout }: Props) => {
   };
   return (
     <>
-      <p className='text-slate-100 text-sm ml-2 mt-6 '>
-        {new Date(workout.date).toLocaleDateString('en-GB')}
-      </p>
-      <div
-        className='flex flex-wrap justify-between py-4 px-6 bg-zinc-800 text-slate-100 rounded-lg hover:cursor-pointer'
-        onClick={() => setExpanded(!isExpanded)}
-      >
-        {isExpanded ? (
-          <ChevronUpIcon className='mt-1 h-5 w-5' />
-        ) : (
-          <ChevronDownIcon className='mt-1 h-5 w-5' />
-        )}
-        <p>{workout.type}</p>
-        <p>{workout.distance} km</p>
-        <p>{formatDuration(workout.duration)}</p>
-      </div>
-      <div
-        className={`${
-          isExpanded ? 'opacity-100' : 'opacity-0'
-        } transition-opacity ease-linear duration-500`}
-      >
-        {isExpanded && (
-          <div className='flex justify-end'>
-            <EditModal workout={workout} />
-            {/* TODO: separate into own component -- delete confirmation prompt */}
-            <Button
-              onPress={() => handleDelete(workout.id)}
-              className='mt-4 p-4 bg-red-400 text-black rounded-full transition ease-in-out hover:scale-105 hover:bg-red-500 duration-300'
-            >
-              <TrashIcon className='mx-auto h-5 w-5' />
-            </Button>
-          </div>
-        )}
+      <div className='bg-zinc-800 rounded-lg mt-2'>
+        <p className='text-slate-100 text-sm ml-2 pt-2'>
+          {new Date(workout.date).toLocaleDateString('en-GB')}
+        </p>
+        <div
+          className='flex flex-wrap justify-between pt-4 pb-8 px-6 text-slate-100 hover:cursor-pointer sm:px-32 sm:pt-0 sm:pb-6'
+          onClick={() => setExpanded(!isExpanded)}
+        >
+          <p>{workout.type}</p>
+          <p>{workout.distance} km</p>
+          <p>{formatDuration(workout.duration)}</p>
+          {isExpanded ? (
+            <ChevronUpIcon className='h-6 w-6' />
+          ) : (
+            <ChevronDownIcon className='h-6 w-6' />
+          )}
+        </div>
+        <div
+          className={`${
+            isExpanded ? 'opacity-100' : 'opacity-0'
+          } transition-opacity ease-in-out duration-500`}
+        >
+          {isExpanded && (
+            <div className='flex justify-end pb-2 px-6'>
+              <EditModal workout={workout} />
+              {/* TODO: separate into own component -- add delete confirmation prompt */}
+              <Button
+                onPress={() => handleDelete(workout.id)}
+                className='mb-4 p-4 bg-red-400 text-black rounded-full transition ease-linear duration-300 hover:scale-105 hover:bg-red-500 '
+              >
+                <TrashIcon className='mx-auto h-5 w-5' />
+              </Button>
+            </div>
+          )}
+        </div>
       </div>
     </>
   );
