@@ -26,16 +26,11 @@ const WorkoutCard = ({ workout }: Props) => {
   };
   return (
     <>
-      <p className='text-slate-100 text-sm mt-6'>
-        {new Date(workout.date).toLocaleDateString('en-EN', {
-          weekday: 'long',
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-        })}
+      <p className='text-slate-100 text-sm ml-2 mt-6 '>
+        {new Date(workout.date).toLocaleDateString('en-GB')}
       </p>
       <div
-        className='flex flex-wrap justify-between p-4 bg-zinc-800 text-slate-100 rounded-lg hover:cursor-pointer'
+        className='flex flex-wrap justify-between py-4 px-6 bg-zinc-800 text-slate-100 rounded-lg hover:cursor-pointer'
         onClick={() => setExpanded(!isExpanded)}
       >
         {isExpanded ? (
@@ -55,6 +50,7 @@ const WorkoutCard = ({ workout }: Props) => {
         {isExpanded && (
           <div className='flex justify-start mx-8 sm:mx-32 xl:mx-48'>
             <EditModal workout={workout} />
+            {/* TODO: separate into own component -- delete confirmation prompt */}
             <Button
               onPress={() => handleDelete(workout.id)}
               className='w-full mt-4 py-2 px-6  bg-red-400 text-black rounded-full transition ease-in-out hover:scale-105 hover:bg-red-500 duration-300'
