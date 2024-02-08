@@ -24,7 +24,7 @@ const EditModal = ({ workout }: Props) => {
         onOpenChange={setOpen}
         className='fixed top-20 inset-0 bg-black/50'
       >
-        <Modal className='fixed top-20 inset-0 pt-8 pb-10 w-full h-full text-left overflow-scroll sm:w-2/5 sm:mx-auto sm:overflow-hidden'>
+        <Modal className='fixed top-20 inset-0 pt-8 pb-20 w-full h-full text-left overflow-scroll sm:w-2/5 sm:mx-auto sm:overflow-hidden'>
           <Dialog>
             <Button className='absolute right-0 my-3 mx-6' onPress={() => setOpen(false)}>
               <XMarkIcon className='h-10 w-10 text-slate-100' />
