@@ -26,7 +26,7 @@ const MobileMenu = () => {
               onClick={() => setOpen(false)}
               className='block mt-1 py-2 px-6 hover:text-green-300'
             >
-              Your workouts
+              My workouts
             </NavLink>
             <NavLink
               to='/routeplanner'

@@ -15,7 +15,7 @@ const Navbar = () => {
           to='/'
           className='block p-6 hover:text-green-300 font-semibold border-b-2 border-zinc-800  hover:border-green-300'
         >
-          Your workouts
+          My workouts
         </NavLink>
         <NavLink
           to='/routeplanner'

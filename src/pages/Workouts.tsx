@@ -6,7 +6,7 @@ const Workouts = () => {
     <div className='mb-10 xl:mx-20'>
       <div>
         <h1 className='mt-6 text-center text-slate-100 text-2xl font-bold tracking-tighter sm:mb-6'>
-          Your workouts
+          My workouts
         </h1>
       </div>
       <div className='flex justify-center'>
