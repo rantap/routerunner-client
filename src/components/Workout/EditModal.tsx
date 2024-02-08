@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Dialog, DialogTrigger, Modal } from 'react-aria-components';
+import { Button, Dialog, DialogTrigger, Modal, ModalOverlay } from 'react-aria-components';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import EditForm from './Forms/EditForm';
 import { Workout } from '../../types';
@@ -18,19 +18,21 @@ const EditModal = ({ workout }: Props) => {
       >
         Edit
       </Button>
-      <Modal
+      <ModalOverlay
         isDismissable
         isOpen={isOpen}
         onOpenChange={setOpen}
-        className='fixed top-20 inset-0 pt-8 pb-20 w-full text-left bg-zinc-900 overflow-scroll sm:w-2/5 sm:mx-auto sm:overflow-hidden sm:bg-transparent sm:backdrop-blur'
+        className='fixed top-20 inset-0 bg-black/50'
       >
-        <Dialog>
-          <Button className='absolute right-0 my-3 mx-6' onPress={() => setOpen(false)}>
-            <XMarkIcon className='h-10 w-10 text-slate-100' />
-          </Button>
-          <EditForm workout={workout} />
-        </Dialog>
-      </Modal>
+        <Modal className='fixed top-20 inset-0 pt-8 pb-10 w-full text-left overflow-scroll sm:w-2/5 sm:mx-auto sm:overflow-hidden'>
+          <Dialog>
+            <Button className='absolute right-0 my-3 mx-6' onPress={() => setOpen(false)}>
+              <XMarkIcon className='h-10 w-10 text-slate-100' />
+            </Button>
+            <EditForm workout={workout} />
+          </Dialog>
+        </Modal>
+      </ModalOverlay>
     </DialogTrigger>
   );
 };
