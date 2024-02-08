@@ -26,7 +26,7 @@ const AddModal = () => {
             <Button className='absolute right-0 my-3 mx-6' onPress={() => setOpen(false)}>
               <XMarkIcon className='h-10 w-10 text-slate-100' />
             </Button>
-            <AddForm />
+            <AddForm setOpen={setOpen} />
           </Dialog>
         </Modal>
       </ModalOverlay>

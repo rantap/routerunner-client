@@ -13,21 +13,23 @@ import { editWorkout } from '../../../api/workouts';
 import { Workout } from '../../../types';
 import { formatDuration } from '../../../utils/formatDuration';
 
-interface Props {
+type Props = {
   workout: Workout;
-}
+  setOpen: (value: boolean) => void;
+};
 interface Mutation {
   id: number;
   newWorkout: Workout;
 }
 
-const EditForm = ({ workout }: Props) => {
+const EditForm = ({ workout, setOpen }: Props) => {
   const { control, register, handleSubmit } = useForm<Workout>();
   const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: ({ id, newWorkout }: Mutation) => editWorkout(id, newWorkout),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['workouts'] });
+      setOpen(false);
     },
   });
 

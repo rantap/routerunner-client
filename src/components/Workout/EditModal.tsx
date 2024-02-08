@@ -29,7 +29,7 @@ const EditModal = ({ workout }: Props) => {
             <Button className='absolute right-0 my-3 mx-6' onPress={() => setOpen(false)}>
               <XMarkIcon className='h-10 w-10 text-slate-100' />
             </Button>
-            <EditForm workout={workout} />
+            <EditForm setOpen={setOpen} workout={workout} />
           </Dialog>
         </Modal>
       </ModalOverlay>

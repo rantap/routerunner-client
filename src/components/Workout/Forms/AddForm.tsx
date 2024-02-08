@@ -6,13 +6,18 @@ import { addWorkout } from '../../../api/workouts';
 import { Workout } from '../../../types';
 import { CalendarPicker } from './CalendarPicker';
 
-const AddForm = () => {
+type Props = {
+  setOpen: (value: boolean) => void;
+};
+
+const AddForm = ({ setOpen }: Props) => {
   const { control, register, handleSubmit } = useForm<Workout>();
   const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: addWorkout,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['workouts'] });
+      setOpen(false);
     },
   });
 
@@ -32,12 +37,14 @@ const AddForm = () => {
         <Label className='ml-2 text-slate-100'>Workout type</Label>
         <Input
           {...register('type')}
+          placeholder='Running'
           className='mt-1 px-2 py-2 bg-zinc-900 text-slate-100 rounded-md outline outline-1  outline-slate-100/50 w-full focus:outline-none focus:ring focus:ring-green-300'
         />
         <FieldError className='ml-2 text-red-500' />
       </TextField>
       <Controller
         control={control}
+        defaultValue={new Date()}
         name='date'
         render={({ field: { onChange } }) => {
           return (
@@ -59,6 +66,7 @@ const AddForm = () => {
         <Label className='ml-2 text-slate-100'>Distance</Label>
         <Input
           {...register('distance', { valueAsNumber: true })}
+          placeholder='12.34'
           className='mt-1 px-2 py-2 bg-zinc-900 text-slate-100 rounded-md outline outline-1  outline-slate-100/50 w-full focus:outline-none focus:ring focus:ring-green-300'
         />
         <FieldError className='ml-2 text-red-500' />
@@ -66,7 +74,10 @@ const AddForm = () => {
       <TextField className='mt-2 mx-4' name='duration' isRequired>
         <Label className=' ml-2 text-slate-100'>Duration</Label>
         <Input
-          {...register('duration', { valueAsNumber: true })}
+          {...register('duration', {
+            setValueAs: (v) => new Date('1970-01-01T' + v + 'Z').getTime() / 1000,
+          })}
+          placeholder='hh:mm:ss'
           className='mt-1 px-2 py-2 bg-zinc-900 text-slate-100 rounded-md outline outline-1  outline-slate-100/50 w-full focus:outline-none focus:ring focus:ring-green-300'
         />
         <FieldError className='ml-2 text-red-500' />
