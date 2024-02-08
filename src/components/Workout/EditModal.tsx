@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, Dialog, DialogTrigger, Modal, ModalOverlay } from 'react-aria-components';
-import { XMarkIcon } from '@heroicons/react/24/solid';
+import { XMarkIcon, PencilSquareIcon } from '@heroicons/react/24/solid';
 import EditForm from './Forms/EditForm';
 import { Workout } from '../../types';
 
@@ -14,9 +14,9 @@ const EditModal = ({ workout }: Props) => {
     <DialogTrigger>
       <Button
         onPress={() => setOpen(true)}
-        className='w-full mt-4 py-2 px-6 mr-4 bg-yellow-300 text-black rounded-full transition ease-in-out hover:scale-105 hover:bg-yellow-400 duration-300'
+        className='mt-4 p-4 mr-4 bg-yellow-300 text-black rounded-full transition ease-in-out hover:scale-105 hover:bg-yellow-400 duration-300'
       >
-        Edit
+        <PencilSquareIcon className='mx-auto h-5 w-5' />
       </Button>
       <ModalOverlay
         isDismissable

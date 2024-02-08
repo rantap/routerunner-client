@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, Dialog, DialogTrigger, Modal, ModalOverlay } from 'react-aria-components';
-import { XMarkIcon } from '@heroicons/react/24/solid';
+import { XMarkIcon, DocumentPlusIcon } from '@heroicons/react/24/solid';
 import AddForm from './Forms/AddForm';
 
 const AddModal = () => {
@@ -10,9 +10,10 @@ const AddModal = () => {
     <DialogTrigger>
       <Button
         onPress={() => setOpen(true)}
-        className='mt-6 px-8 py-4 bg-green-300 rounded-full transition ease-in-out hover:scale-105 hover:bg-green-400 duration-300'
+        className='flex mt-6 px-8 py-4 bg-green-300 rounded-full transition ease-in-out hover:scale-105 hover:bg-green-400 duration-300'
       >
-        + Add workout
+        <DocumentPlusIcon className='h-8 w-8 mr-2' />
+        <p className='my-auto tracking-tighter'>Add a workout</p>
       </Button>
       <ModalOverlay
         isDismissable

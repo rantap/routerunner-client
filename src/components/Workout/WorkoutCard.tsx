@@ -3,8 +3,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { deleteWorkout } from '../../api/workouts';
 import { formatDuration } from '../../utils/formatDuration';
 import { Button } from 'react-aria-components';
-import { ChevronUpIcon } from '@heroicons/react/24/solid';
-import { ChevronDownIcon } from '@heroicons/react/24/solid';
+import { ChevronUpIcon, ChevronDownIcon, TrashIcon } from '@heroicons/react/24/solid';
 import { Workout } from '../../types';
 import EditModal from './EditModal';
 
@@ -48,14 +47,14 @@ const WorkoutCard = ({ workout }: Props) => {
         } transition-opacity ease-linear duration-500`}
       >
         {isExpanded && (
-          <div className='flex justify-start mx-8 sm:mx-32 xl:mx-48'>
+          <div className='flex justify-end'>
             <EditModal workout={workout} />
             {/* TODO: separate into own component -- delete confirmation prompt */}
             <Button
               onPress={() => handleDelete(workout.id)}
-              className='w-full mt-4 py-2 px-6  bg-red-400 text-black rounded-full transition ease-in-out hover:scale-105 hover:bg-red-500 duration-300'
+              className='mt-4 p-4 bg-red-400 text-black rounded-full transition ease-in-out hover:scale-105 hover:bg-red-500 duration-300'
             >
-              Delete
+              <TrashIcon className='mx-auto h-5 w-5' />
             </Button>
           </div>
         )}
