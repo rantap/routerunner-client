@@ -50,7 +50,7 @@ const EditForm = ({ workout, setOpen }: Props) => {
         <Label className='ml-2 text-slate-100'>Workout type</Label>
         <Input
           {...register('type')}
-          className='mt-1 px-2 py-2 bg-zinc-900 text-slate-100 rounded-md outline outline-1 outline-slate-100/50 w-full focus:outline-none focus:ring focus:ring-green-300'
+          className='mt-1 px-2 py-2 bg-zinc-900 text-slate-100 rounded-md border border-1  border-slate-100/50 w-full focus:outline-none focus:ring focus:ring-green-300'
         />
         <FieldError className='ml-2 text-red-500' />
       </TextField>
@@ -59,7 +59,6 @@ const EditForm = ({ workout, setOpen }: Props) => {
         defaultValue={workout.date}
         name='date'
         render={({ field }) => {
-          console.log(workout.date.toString());
           return (
             <CalendarPicker
               onChange={(value) => {
@@ -84,7 +83,7 @@ const EditForm = ({ workout, setOpen }: Props) => {
         <Label className='ml-2 text-slate-100'>Distance</Label>
         <Input
           {...register('distance', { valueAsNumber: true })}
-          className='mt-1 px-2 py-2 bg-zinc-900 text-slate-100 rounded-md outline outline-1 outline-slate-100/50 w-full focus:outline-none focus:ring focus:ring-green-300'
+          className='mt-1 px-2 py-2 bg-zinc-900 text-slate-100 rounded-md border border-1  border-slate-100/50 w-full focus:outline-none focus:ring focus:ring-green-300'
         />
         <FieldError className='ml-2 text-red-500' />
       </TextField>
@@ -99,7 +98,7 @@ const EditForm = ({ workout, setOpen }: Props) => {
           {...register('duration', {
             setValueAs: (v) => new Date('1970-01-01T' + v + 'Z').getTime() / 1000,
           })}
-          className='mt-1 px-2 py-2 bg-zinc-900 text-slate-100 rounded-md outline outline-1 outline-slate-100/50 w-full focus:outline-none focus:ring focus:ring-green-300'
+          className='mt-1 px-2 py-2 bg-zinc-900 text-slate-100 rounded-md border border-1  border-slate-100/50 w-full focus:outline-none focus:ring focus:ring-green-300'
         />
         <FieldError className='ml-2 text-red-500' />
       </TextField>
