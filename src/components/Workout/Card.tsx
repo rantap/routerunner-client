@@ -11,7 +11,7 @@ import EditModal from './EditModal';
 interface Props {
   workout: Workout;
 }
-const WorkoutCard = ({ workout }: Props) => {
+const Card = ({ workout }: Props) => {
   const [isExpanded, setExpanded] = useState(false);
   const queryClient = useQueryClient();
   const mutation = useMutation({
@@ -69,4 +69,4 @@ const WorkoutCard = ({ workout }: Props) => {
     </>
   );
 };
-export default WorkoutCard;
+export default Card;

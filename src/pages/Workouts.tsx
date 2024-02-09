@@ -1,5 +1,5 @@
 import AddModal from '../components/Workout/AddModal';
-import WorkoutTabs from '../components/Workout/WorkoutTabs';
+import Tabs from '../components/Workout/Tabs';
 
 const Workouts = () => {
   return (
@@ -14,7 +14,7 @@ const Workouts = () => {
       </div>
       <div className='flex flex-wrap'>
         <div className='mx-auto mt-4 w-5/6 sm:w-3/5'>
-          <WorkoutTabs />
+          <Tabs />
         </div>
       </div>
     </div>
