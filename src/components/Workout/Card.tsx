@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { deleteWorkout } from '../../api/workouts';
 import { formatDuration } from '../../utils/formatDuration';
+import { calculateAvgPace } from '../../utils/calculateAvgPace';
 import { Button } from 'react-aria-components';
 import { ChevronUpIcon, ChevronDownIcon, TrashIcon } from '@heroicons/react/24/solid';
 import { Workout } from '../../types';
@@ -26,11 +27,11 @@ const WorkoutCard = ({ workout }: Props) => {
   return (
     <>
       <div className='bg-zinc-800 rounded-lg mt-2'>
-        <p className='text-slate-100 text-sm ml-2 pt-2'>
+        <p className='text-slate-100 text-sm ml-2 pt-2 lg:ml-4 lg:pt-4'>
           {new Date(workout.date).toLocaleDateString('en-GB')}
         </p>
         <div
-          className='flex flex-wrap justify-between pt-4 pb-8 px-6 text-slate-100 hover:cursor-pointer sm:px-32 sm:pt-0 sm:pb-6'
+          className='flex flex-wrap justify-between pt-4 pb-10 px-6 text-slate-100 hover:cursor-pointer md:px-24 lg:px-32 sm:pt-0 sm:pb-8'
           onClick={() => setExpanded(!isExpanded)}
         >
           <p>{workout.type}</p>
@@ -49,6 +50,10 @@ const WorkoutCard = ({ workout }: Props) => {
         >
           {isExpanded && (
             <div className='flex justify-end pb-2 px-6'>
+              <span className='text-sm text-slate-100 mr-10 my-1 md:text-base md:my-3 md:mx'>
+                Average pace: {formatDuration(calculateAvgPace(workout.duration, workout.distance))}{' '}
+                /km
+              </span>
               <EditModal workout={workout} />
               {/* TODO: separate into own component -- add delete confirmation prompt */}
               <Button
