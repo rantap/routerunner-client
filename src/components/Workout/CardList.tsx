@@ -3,6 +3,7 @@ import { Workout } from '../../types';
 import { fetchWorkouts } from '../../api/workouts';
 import Card from './Card';
 import { Spinner } from '../UI/Spinner';
+import { sortByDate } from '../../utils/sortByDate';
 
 const CardList = () => {
   const { isLoading, isError, data, error } = useQuery({
@@ -11,6 +12,7 @@ const CardList = () => {
   });
 
   if (isError) return <p>Error: {error.message}</p>;
+  const workouts = sortByDate(data);
 
   return (
     <>
@@ -21,7 +23,7 @@ const CardList = () => {
         </div>
       ) : (
         <>
-          {data?.map((workout: Workout) => (
+          {workouts.map((workout: Workout) => (
             <Card key={workout.id} workout={workout} />
           ))}
         </>
