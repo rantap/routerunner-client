@@ -12,7 +12,7 @@ const CardList = () => {
   });
 
   if (isError) return <p>Error: {error.message}</p>;
-  const workouts = sortByDate(data);
+  const workouts = data ? sortByDate(data) : [];
 
   return (
     <>
