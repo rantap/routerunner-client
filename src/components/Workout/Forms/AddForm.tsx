@@ -27,7 +27,7 @@ const AddForm = ({ setOpen }: Props) => {
   };
   return (
     <Form
-      className='p-4 pb-6 mb-10 bg-zinc-800 rounded-3xl text-left'
+      className='p-4 pb-6 mb-10 bg-zinc-800 rounded-3xl text-left outline-none data-[focus-visible]:outline-2 data-[focus-visible]:outline-slate-100 data-[focus-visible]:outline-solid'
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className='flex justify-start'>

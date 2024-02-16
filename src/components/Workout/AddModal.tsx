@@ -10,7 +10,7 @@ const AddModal = () => {
     <DialogTrigger>
       <Button
         onPress={() => setOpen(true)}
-        className='flex mt-6 px-8 py-4 bg-green-300 rounded-full transition ease-in-out hover:scale-105 hover:bg-green-400 duration-300'
+        className='flex mt-6 px-8 py-4 bg-green-300 rounded-full transition ease-in-out hover:scale-105 hover:bg-green-400 duration-300 outline-none data-[focus-visible]:outline-2 data-[focus-visible]:outline-slate-100 data-[focus-visible]:outline-solid'
       >
         <DocumentPlusIcon className='h-8 w-8 mr-2' />
         <p className='my-auto tracking-tighter'>Add a workout</p>
@@ -21,9 +21,12 @@ const AddModal = () => {
         onOpenChange={setOpen}
         className='fixed top-20 inset-0 bg-black/50'
       >
-        <Modal className='fixed top-20 inset-0 mt-2 pt-8 pb-28 w-full h-full text-left overflow-scroll sm:w-2/5 sm:mx-auto sm:pt-20 sm:overflow-hidden'>
-          <Dialog>
-            <Button className='absolute right-0 my-3 mx-6' onPress={() => setOpen(false)}>
+        <Modal className='fixed top-20 inset-0 mt-2 pt-8 pb-28 w-full h-full text-left overflow-scroll sm:w-2/5 sm:mx-auto sm:pt-20 sm:overflow-hidden '>
+          <Dialog className='outline-none data-[focus-visible]:outline-2 data-[focus-visible]:outline-slate-100 data-[focus-visible]:outline-solid'>
+            <Button
+              className='absolute right-0 my-3 mx-6 outline-none data-[focus-visible]:outline-2 data-[focus-visible]:outline-slate-100 data-[focus-visible]:outline-solid'
+              onPress={() => setOpen(false)}
+            >
               <XMarkIcon className='h-10 w-10 text-slate-100' />
             </Button>
             <AddForm setOpen={setOpen} />
