@@ -10,7 +10,7 @@ const WorkoutTabs = () => {
           className='p-2 border-solid border-2 border-transparent outline-none hover:cursor-pointer data-[selected]:border-b-green-300 data-[selected]:text-slate-100 data-[focus-visible]:outline-2 data-[focus-visible]:outline-slate-100 data-[focus-visible]:outline-solid'
           id='All'
         >
-          All workout
+          All workouts
         </Tab>
         <Tab
           className='p-2 border-solid border-2 border-transparent outline-none hover:cursor-pointer data-[selected]:border-b-green-300 data-[selected]:text-slate-100 data-[focus-visible]:outline-2 data-[focus-visible]:outline-slate-100 data-[focus-visible]:outline-solid'
