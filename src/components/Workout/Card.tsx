@@ -27,7 +27,7 @@ const Card = ({ workout }: Props) => {
   return (
     <>
       <div className='bg-zinc-800 rounded-lg mt-2'>
-        <p className='text-slate-100 text-sm ml-2 pt-2 lg:ml-4 lg:pt-4'>
+        <p className='text-slate-300 text-sm ml-2 pt-2 lg:ml-4 lg:pt-4'>
           {new Date(workout.date).toLocaleDateString('en-GB')}
         </p>
         <div

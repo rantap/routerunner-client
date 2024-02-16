@@ -19,7 +19,7 @@ const CardList = () => {
       {isLoading ? (
         <div className='text-center m-12'>
           <Spinner />
-          <p className='mt-6'>Please wait while the web service spins up...</p>
+          <p className='mt-6'>Loading...</p>
         </div>
       ) : (
         <>
