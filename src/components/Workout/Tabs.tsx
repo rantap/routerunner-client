@@ -1,6 +1,6 @@
 import { Tab, TabList, TabPanel, Tabs } from 'react-aria-components';
-
 import CardList from './CardList';
+import Totals from './Totals';
 
 const WorkoutTabs = () => {
   return (
@@ -23,7 +23,7 @@ const WorkoutTabs = () => {
         <CardList />
       </TabPanel>
       <TabPanel id='Totals' className=''>
-        <p className='text-slate-100'>Total calculations</p>
+        <Totals />
       </TabPanel>
     </Tabs>
   );
