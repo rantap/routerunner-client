@@ -3,9 +3,13 @@ import { Workout } from '../../types';
 import { fetchWorkouts } from '../../api/workouts';
 import Card from './Card';
 import { Spinner } from '../UI/Spinner';
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
 import { sortByDate } from '../../utils/sortByDate';
+import { useState } from 'react';
+import { Button } from 'react-aria-components';
 
 const CardList = () => {
+  const [pageIndex, setPageIndex] = useState(1);
   const { isLoading, isError, data, error } = useQuery({
     queryKey: ['workouts'],
     queryFn: fetchWorkouts,
@@ -28,6 +32,17 @@ const CardList = () => {
           ))}
         </>
       )}
+      <div className='flex justify-between mt-4'>
+        <Button onPress={() => setPageIndex(pageIndex - 3)}>
+          <ChevronLeftIcon className='h-10 w-10 text-slate-100' />
+        </Button>
+        <Button className='text-2xl px-3'>{pageIndex}</Button>
+        <Button className='text-2xl px-3'>{pageIndex + 1}</Button>
+        <Button className='text-2xl px-3'>{pageIndex + 2}</Button>
+        <Button onPress={() => setPageIndex(pageIndex + 3)}>
+          <ChevronRightIcon className='h-10 w-10 text-slate-100' />
+        </Button>
+      </div>
     </>
   );
 };
