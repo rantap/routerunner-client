@@ -32,14 +32,12 @@ const CardList = () => {
           ))}
         </>
       )}
-      <div className='flex justify-between mt-4'>
-        <Button onPress={() => setPageIndex(pageIndex - 3)}>
+      <div className='flex justify-evenly mt-4'>
+        <Button onPress={() => setPageIndex(pageIndex - 1)}>
           <ChevronLeftIcon className='h-10 w-10 text-slate-100' />
         </Button>
         <Button className='text-2xl px-3'>{pageIndex}</Button>
-        <Button className='text-2xl px-3'>{pageIndex + 1}</Button>
-        <Button className='text-2xl px-3'>{pageIndex + 2}</Button>
-        <Button onPress={() => setPageIndex(pageIndex + 3)}>
+        <Button onPress={() => setPageIndex(pageIndex + 1)}>
           <ChevronRightIcon className='h-10 w-10 text-slate-100' />
         </Button>
       </div>
