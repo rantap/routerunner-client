@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { deleteWorkout } from '../../api/workouts';
-import { formatDuration } from '../../utils/formatDuration';
-import { calculateAvgPace } from '../../utils/calculateAvgPace';
+import { deleteWorkout } from '../../../api/workouts';
+import { formatDuration } from '../../../utils/formatDuration';
+import { calculateAvgPace } from '../../../utils/calculateAvgPace';
 import { Button } from 'react-aria-components';
 import { ChevronUpIcon, ChevronDownIcon, TrashIcon } from '@heroicons/react/24/solid';
-import { Workout } from '../../types';
-import EditModal from './EditModal';
+import { Workout } from '../../../types';
+import EditModal from '../Modals/EditModal';
 
 interface Props {
   workout: Workout;

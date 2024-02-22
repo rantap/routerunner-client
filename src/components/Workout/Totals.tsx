@@ -1,4 +1,4 @@
-import { CalendarRangePicker } from './CalendarRangePicker';
+import { CalendarRangePicker } from './Calendar/CalendarRangePicker';
 
 const TotalsList = () => {
   return (

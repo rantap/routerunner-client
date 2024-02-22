@@ -1,4 +1,4 @@
-import AddModal from '../components/Workout/AddModal';
+import AddModal from '../components/Workout/Modals/AddModal';
 import Tabs from '../components/Workout/Tabs';
 
 const Workouts = () => {

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Button, Dialog, DialogTrigger, Modal, ModalOverlay } from 'react-aria-components';
 import { XMarkIcon, PencilSquareIcon } from '@heroicons/react/24/solid';
-import EditForm from './Forms/EditForm';
-import { Workout } from '../../types';
+import EditForm from '../Forms/EditForm';
+import { Workout } from '../../../types';
 
 interface Props {
   workout: Workout;

@@ -1,5 +1,5 @@
 import { Tab, TabList, TabPanel, Tabs } from 'react-aria-components';
-import CardList from './CardList';
+import CardList from './Cards/CardList';
 import Totals from './Totals';
 
 const WorkoutTabs = () => {

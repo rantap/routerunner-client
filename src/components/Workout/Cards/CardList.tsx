@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
-import { Workout } from '../../types';
-import { fetchWorkouts } from '../../api/workouts';
+import { Workout } from '../../../types';
+import { fetchWorkouts } from '../../../api/workouts';
 import Card from './Card';
-import { Spinner } from '../UI/Spinner';
+import { Spinner } from '../../UI/Spinner';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
-import { sortByDate } from '../../utils/sortByDate';
+import { sortByDate } from '../../../utils/sortByDate';
 import { useState } from 'react';
 import { Button } from 'react-aria-components';
 

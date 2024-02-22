@@ -30,10 +30,13 @@ export function CalendarPicker<T extends DateValue>({
 }: CalendarPickerProps<T>) {
   return (
     <I18nProvider locale='en-GB'>
-      <DatePicker {...props} className='group flex flex-col gap-1 w-full'>
+      <DatePicker
+        {...props}
+        className='group flex flex-col gap-1 w-full data-[focus-ring]:outline-green-300'
+      >
         <Label className='ml-6 text-slate-100'>{label}</Label>
-        <Group className='flex mb-2 mx-4'>
-          <DateInput className='flex px-2 py-2 bg-zinc-900 text-slate-100 rounded-md outline outline-1  outline-slate-100/50 w-full focus:outline-none focus:ring focus:ring-green-300'>
+        <Group className='flex mb-2 mx-4 focus:ring focus:ring-green-300'>
+          <DateInput className='flex px-2 py-2 bg-zinc-900 text-slate-100 outline-none rounded-md border border-1 border-slate-100/50 w-full data-[focus-visible]:outline-green-300'>
             {(segment) => (
               <DateSegment
                 className='rounded ml-1 outline-none focus:bg-green-300 focus:text-zinc-900'

@@ -4,7 +4,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { today, getLocalTimeZone, toCalendarDateTime } from '@internationalized/date';
 import { addWorkout } from '../../../api/workouts';
 import { Workout } from '../../../types';
-import { CalendarPicker } from './CalendarPicker';
+import { CalendarPicker } from '../Calendar/CalendarPicker';
 
 type Props = {
   setOpen: (value: boolean) => void;

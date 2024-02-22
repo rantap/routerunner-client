@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, Dialog, DialogTrigger, Modal, ModalOverlay } from 'react-aria-components';
 import { XMarkIcon, DocumentPlusIcon } from '@heroicons/react/24/solid';
-import AddForm from './Forms/AddForm';
+import AddForm from '../Forms/AddForm';
 
 const AddModal = () => {
   const [isOpen, setOpen] = useState(false);
