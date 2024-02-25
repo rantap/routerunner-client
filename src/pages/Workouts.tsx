@@ -1,5 +1,5 @@
-import AddModal from '../components/Workout/Modals/AddModal';
-import Tabs from '../components/Workout/Tabs';
+import AddModal from '../components/Workouts/Modals/AddModal';
+import Tabs from '../components/Workouts/Tabs';
 
 const Workouts = () => {
   return (
