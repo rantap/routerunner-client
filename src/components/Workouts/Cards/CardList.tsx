@@ -1,44 +1,56 @@
-import { useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { Workout } from '../../../types';
 import { fetchWorkouts } from '../../../api/workouts';
 import Card from './Card';
 import { Spinner } from '../../UI/Spinner';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
-import { sortByDate } from '../../../utils/sortByDate';
 import { useState } from 'react';
 import { Button } from 'react-aria-components';
 
 const CardList = () => {
-  const [pageIndex, setPageIndex] = useState(1);
-  const { isLoading, isError, data, error } = useQuery({
-    queryKey: ['workouts'],
-    queryFn: fetchWorkouts,
+  const [page, setPage] = useState(1);
+  const results: number = 5;
+  const { isPending, isError, error, data, isPlaceholderData } = useQuery({
+    queryKey: ['workouts', page, results],
+    queryFn: () => fetchWorkouts(page, results),
+    placeholderData: keepPreviousData,
   });
-
-  if (isError) return <p>Error: {error.message}</p>;
-  const workouts = data ? sortByDate(data) : [];
 
   return (
     <>
-      {isLoading ? (
-        <div className='text-center m-12'>
+      {isPending ? (
+        <div className='m-12 text-center'>
           <Spinner />
           <p className='mt-6'>Loading...</p>
         </div>
+      ) : isError ? (
+        <div>Error: {error.message}</div>
       ) : (
         <>
-          {workouts.map((workout: Workout) => (
+          {data.workouts.map((workout: Workout) => (
             <Card key={workout.id} workout={workout} />
           ))}
         </>
       )}
       <div className='flex justify-evenly mt-4'>
-        <Button onPress={() => setPageIndex(pageIndex - 1)}>
-          <ChevronLeftIcon className='h-10 w-10 text-slate-100' />
+        <Button
+          onPress={() => setPage((prev) => Math.max(prev - 1, 1))}
+          isDisabled={page === 1}
+          className='text-slate-100 outline-none data-[focus-visible]:ring data-[focus-visible]:ring-green-300 data-[disabled]:invisible'
+        >
+          <ChevronLeftIcon className='h-10 w-10' />
         </Button>
-        <Button className='text-2xl px-3'>{pageIndex}</Button>
-        <Button onPress={() => setPageIndex(pageIndex + 1)}>
-          <ChevronRightIcon className='h-10 w-10 text-slate-100' />
+        <span className='px-3 text-2xl'>{page}</span>
+        <Button
+          onPress={() => {
+            if (!isPlaceholderData && data.hasMorePages) {
+              setPage((prev) => prev + 1);
+            }
+          }}
+          isDisabled={isPlaceholderData || !data?.hasMorePages}
+          className='text-slate-100 outline-none data-[focus-visible]:ring data-[focus-visible]:ring-green-300 data-[disabled]:invisible'
+        >
+          <ChevronRightIcon className='h-10 w-10' />
         </Button>
       </div>
     </>
