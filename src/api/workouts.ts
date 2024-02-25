@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { Workout } from '../types';
 
-const BASE_URL = import.meta.env.VITE_API_URL;
+const BASE_URL = import.meta.env.VITE_LOCAL_API_URL;
 
-export const fetchWorkouts = async () => {
-  const response = await axios.get(`${BASE_URL}/workouts`);
+export const fetchWorkouts = async (page: number, results: number) => {
+  const response = await axios.get(`${BASE_URL}/workouts?page=${page}&results=${results}`);
   const workouts = response.data;
 
   return workouts;
