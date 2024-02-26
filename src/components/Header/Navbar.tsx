@@ -13,13 +13,21 @@ const Navbar = () => {
       <div className='hidden sm:flex sm:h-fit sm:static sm:ml-4'>
         <NavLink
           to='/'
-          className='block p-6 hover:text-green-300 font-semibold border-b-2 border-zinc-800  hover:border-green-300'
+          className={({ isActive }) =>
+            `block p-6 font-semibold border-b-2 border-transparent hover:text-green-300  ${
+              isActive ? 'text-green-300 border-green-300' : ''
+            }`
+          }
         >
           My workouts
         </NavLink>
         <NavLink
           to='/routeplanner'
-          className='block p-6 hover:text-green-300 font-semibold border-b-2 border-transparent hover:border-green-300 active:border-green-300'
+          className={({ isActive }) =>
+            `block p-6 font-semibold border-b-2 border-transparent hover:text-green-300 ${
+              isActive ? 'text-green-300 border-green-300' : ''
+            }`
+          }
         >
           Create a route
         </NavLink>
