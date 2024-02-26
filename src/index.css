@@ -13,6 +13,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+td {
+  padding: 2px 0;
+}
 .maplibregl-canvas-container.maplibregl-interactive,
 .maplibregl-ctrl-group button.maplibregl-ctrl-compass {
   cursor: crosshair;

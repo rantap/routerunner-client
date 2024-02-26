@@ -40,7 +40,7 @@ export function CalendarRangePicker<T extends DateValue>({
         <Group className='flex justify-center mb-2 focus:ring focus:ring-green-300'>
           <DateInput
             slot='start'
-            className='flex px-2 py-2 bg-zinc-900 text-slate-100 rounded-md border border-1  border-slate-100/50 w-full focus:ring focus:ring-bg-300 data-[focus-visible]:outline-green-300 data-[focus-visible]:outline-offset-2'
+            className='flex px-2 py-2 bg-zinc-900 text-slate-100 rounded-md border border-1  border-slate-100/50 w-full focus:ring focus:ring-bg-300 data-[focus-visible]:ring data-[focus-visible]:ring-green-300'
           >
             {(segment) => (
               <DateSegment
@@ -54,7 +54,7 @@ export function CalendarRangePicker<T extends DateValue>({
           </span>
           <DateInput
             slot='end'
-            className='flex px-2 py-2 bg-zinc-900 text-slate-100 rounded-md border border-1  border-slate-100/50 w-full focus:ring focus:ring-bg-300 data-[focus-visible]:outline-green-300 data-[focus-visible]:outline-offset-2'
+            className='flex px-2 py-2 bg-zinc-900 text-slate-100 rounded-md border border-1  border-slate-100/50 w-full focus:ring focus:ring-bg-300 data-[focus-visible]:ring data-[focus-visible]:ring-green-300 '
           >
             {(segment) => (
               <DateSegment
@@ -63,7 +63,7 @@ export function CalendarRangePicker<T extends DateValue>({
               />
             )}
           </DateInput>
-          <Button className='ml-4 text-slate-100'>
+          <Button className='ml-4 text-slate-100 outline-none data-[focus-visible]:ring data-[focus-visible]:ring-orange-300'>
             <CalendarDaysIcon className='h-10 w-10' />
           </Button>
         </Group>
@@ -72,15 +72,21 @@ export function CalendarRangePicker<T extends DateValue>({
         <Popover>
           <Dialog>
             <RangeCalendar
-              className='p-4 mr-3 bg-zinc-800 border border-zinc-900 rounded-xl 
-         text-slate-100'
+              className='p-4 mr-3 bg-zinc-900 text-slate-100 rounded-xl 
+          shadow-2xl table-[td]:px-0'
             >
               <header className='flex justify-evenly mb-4'>
-                <Button slot='previous'>
+                <Button
+                  slot='previous'
+                  className='outline-none data-[focus-visible]:ring data-[focus-visible]:ring-orange-300'
+                >
                   <ChevronLeftIcon className='h-8 w-8' />
                 </Button>
                 <Heading />
-                <Button slot='next'>
+                <Button
+                  slot='next'
+                  className='outline-none data-[focus-visible]:ring data-[focus-visible]:ring-orange-300'
+                >
                   <ChevronRightIcon className='h-8 w-8' />
                 </Button>
               </header>
@@ -88,7 +94,7 @@ export function CalendarRangePicker<T extends DateValue>({
                 {(date) => (
                   <CalendarCell
                     date={date}
-                    className='w-10 h-10 cursor-default rounded-full flex items-center justify-center data-[disabled]:text-gray-500 hover:bg-green-300 hover:text-zinc-900  data-[disabled]:hover:bg-red-500 data-[outside-month]:hidden'
+                    className='w-10 h-10 cursor-default rounded flex items-center justify-center outline-none data-[focus-visible]:ring data-[focus-visible]:ring-orange-300 data-[disabled]:text-gray-500 hover:bg-green-300 hover:text-zinc-900  data-[disabled]:hover:bg-red-500 data-[outside-month]:hidden data-[selected]:bg-green-300 data-[selected]:text-zinc-900 data-[selected]:rounded-none data-[selection-start]:rounded-ss data-[selection-start]:rounded-es data-[selection-end]:rounded-se data-[selection-end]:rounded-ee'
                   />
                 )}
               </CalendarGrid>

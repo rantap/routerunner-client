@@ -15,7 +15,7 @@ const Navbar = () => {
           to='/'
           className={({ isActive }) =>
             `block p-6 font-semibold border-b-2 border-transparent hover:text-green-300  ${
-              isActive ? 'text-green-300 border-green-300' : ''
+              isActive ? 'text-green-300 border-b-green-300' : ''
             }`
           }
         >
@@ -25,7 +25,7 @@ const Navbar = () => {
           to='/routeplanner'
           className={({ isActive }) =>
             `block p-6 font-semibold border-b-2 border-transparent hover:text-green-300 ${
-              isActive ? 'text-green-300 border-green-300' : ''
+              isActive ? 'text-green-300 border-b-green-300' : ''
             }`
           }
         >
