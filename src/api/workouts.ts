@@ -9,6 +9,12 @@ export const fetchWorkouts = async (page: number, results: number) => {
 
   return workouts;
 };
+export const fetchTotals = async (startDate: string, endDate: string) => {
+  const response = await axios.get(`${BASE_URL}/total?start=${startDate}&end=${endDate}`);
+  const workouts = response.data;
+
+  return workouts;
+};
 
 export const addWorkout = async (data: Workout) => {
   const response = await axios.post(`${BASE_URL}/workouts`, data);
