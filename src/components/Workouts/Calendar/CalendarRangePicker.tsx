@@ -73,7 +73,7 @@ export function CalendarRangePicker<T extends DateValue>({
           <Dialog>
             <RangeCalendar
               className='p-4 mr-3 bg-zinc-900 text-slate-100 rounded-xl 
-          shadow-2xl table-[td]:px-0'
+          shadow-2xl'
             >
               <header className='flex justify-evenly mb-4'>
                 <Button

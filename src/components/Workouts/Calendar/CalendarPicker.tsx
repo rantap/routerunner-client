@@ -67,7 +67,7 @@ export function CalendarPicker<T extends DateValue>({
               <CalendarGrid>
                 {(date) => (
                   <CalendarCell
-                    className='w-10 h-10 cursor-default rounded flex items-center justify-center data-[disabled]:text-gray-500 hover:bg-green-300 hover:text-zinc-900  data-[disabled]:hover:bg-red-500 data-[outside-month]:hidden'
+                    className='w-10 h-10 cursor-default rounded flex items-center justify-center data-[disabled]:text-gray-500 hover:bg-green-300 hover:text-zinc-900  data-[disabled]:hover:bg-red-500 data-[outside-month]:hidden outline-none data-[focus-visible]:ring data-[focus-visible]:ring-green-300'
                     date={date}
                   />
                 )}
