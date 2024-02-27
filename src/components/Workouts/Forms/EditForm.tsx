@@ -4,7 +4,6 @@ import { CalendarPicker } from '../Calendar/CalendarPicker';
 import { useForm, Controller } from 'react-hook-form';
 import {
   today,
-  getLocalTimeZone,
   toCalendarDateTime,
   toCalendarDate,
   parseAbsoluteToLocal,
@@ -62,11 +61,11 @@ const EditForm = ({ workout, setOpen }: Props) => {
           return (
             <CalendarPicker
               onChange={(value) => {
-                field.onChange(toCalendarDateTime(value).toDate(getLocalTimeZone()));
+                field.onChange(toCalendarDateTime(value).toDate('UTC'));
                 console.log(value);
               }}
               defaultValue={toCalendarDate(parseAbsoluteToLocal(workout.date.toString()))}
-              maxValue={today(getLocalTimeZone())}
+              maxValue={today('UTC')}
               name='date'
               label='Date'
               isRequired

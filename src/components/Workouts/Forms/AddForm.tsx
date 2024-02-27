@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Form, TextField, Label, Input, Button, FieldError } from 'react-aria-components';
 import { useForm, Controller } from 'react-hook-form';
-import { today, getLocalTimeZone, toCalendarDateTime } from '@internationalized/date';
+import { today, toCalendarDateTime } from '@internationalized/date';
 import { addWorkout } from '../../../api/workouts';
 import { Workout } from '../../../types';
 import { CalendarPicker } from '../Calendar/CalendarPicker';
@@ -50,11 +50,10 @@ const AddForm = ({ setOpen }: Props) => {
           return (
             <CalendarPicker
               onChange={(value) => {
-                onChange(toCalendarDateTime(value).toDate(getLocalTimeZone()));
+                onChange(toCalendarDateTime(value).toDate('UTC'));
                 console.log(value);
               }}
-              defaultValue={today(getLocalTimeZone())}
-              maxValue={today(getLocalTimeZone())}
+              maxValue={today('UTC')}
               name='date'
               label='Date'
               isRequired
