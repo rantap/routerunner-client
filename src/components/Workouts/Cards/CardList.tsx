@@ -30,29 +30,29 @@ const CardList = () => {
           {data.workouts.map((workout: Workout) => (
             <Card key={workout.id} workout={workout} />
           ))}
+          <div className='flex justify-evenly mt-4'>
+            <Button
+              onPress={() => setPage((prev) => Math.max(prev - 1, 1))}
+              isDisabled={page === 1}
+              className='text-slate-100 outline-none data-[focus-visible]:ring data-[focus-visible]:ring-green-300 data-[disabled]:invisible'
+            >
+              <ChevronLeftIcon className='h-10 w-10' />
+            </Button>
+            <span className='px-3 text-2xl'>{page}</span>
+            <Button
+              onPress={() => {
+                if (!isPlaceholderData && data.hasMorePages) {
+                  setPage((prev) => prev + 1);
+                }
+              }}
+              isDisabled={isPlaceholderData || !data?.hasMorePages}
+              className='text-slate-100 outline-none data-[focus-visible]:ring data-[focus-visible]:ring-green-300 data-[disabled]:invisible'
+            >
+              <ChevronRightIcon className='h-10 w-10' />
+            </Button>
+          </div>
         </>
       )}
-      <div className='flex justify-evenly mt-4'>
-        <Button
-          onPress={() => setPage((prev) => Math.max(prev - 1, 1))}
-          isDisabled={page === 1}
-          className='text-slate-100 outline-none data-[focus-visible]:ring data-[focus-visible]:ring-green-300 data-[disabled]:invisible'
-        >
-          <ChevronLeftIcon className='h-10 w-10' />
-        </Button>
-        <span className='px-3 text-2xl'>{page}</span>
-        <Button
-          onPress={() => {
-            if (!isPlaceholderData && data.hasMorePages) {
-              setPage((prev) => prev + 1);
-            }
-          }}
-          isDisabled={isPlaceholderData || !data?.hasMorePages}
-          className='text-slate-100 outline-none data-[focus-visible]:ring data-[focus-visible]:ring-green-300 data-[disabled]:invisible'
-        >
-          <ChevronRightIcon className='h-10 w-10' />
-        </Button>
-      </div>
     </>
   );
 };
