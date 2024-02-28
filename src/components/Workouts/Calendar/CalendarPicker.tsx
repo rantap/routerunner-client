@@ -11,6 +11,7 @@ import {
   Group,
   Heading,
   Label,
+  Text,
   Popover,
 } from 'react-aria-components';
 import { I18nProvider } from 'react-aria';
@@ -30,13 +31,10 @@ export function CalendarPicker<T extends DateValue>({
 }: CalendarPickerProps<T>) {
   return (
     <I18nProvider locale='en-GB'>
-      <DatePicker
-        {...props}
-        className='group flex flex-col gap-1 w-full data-[focus-ring]:outline-green-300'
-      >
+      <DatePicker {...props} className='group flex flex-col gap-1 w-full'>
         <Label className='ml-6 text-slate-100'>{label}</Label>
-        <Group className='flex mb-2 mx-4 focus:ring focus:ring-green-300'>
-          <DateInput className='flex px-2 py-2 bg-zinc-900 text-slate-100 rounded-md border border-1 border-slate-100/50 w-full outline-none data-[focus-visible]:ring data-[focus-visible]:ring-green-300'>
+        <Group className='flex mx-4 mb-2'>
+          <DateInput className='flex px-2 py-2 bg-zinc-700 text-slate-100 rounded  w-full outline-none data-[focus-visible]:ring data-[focus-visible]:ring-green-300 data-[focus-within]:ring data-[focus-within]:ring-green-300'>
             {(segment) => (
               <DateSegment
                 className='rounded ml-1 outline-none focus:bg-green-300 focus:text-zinc-900'
@@ -44,23 +42,29 @@ export function CalendarPicker<T extends DateValue>({
               />
             )}
           </DateInput>
-          <Button className='ml-4 text-slate-100 outline-none data-[focus-visible]:ring data-[focus-visible]:ring-green-300'>
+          <Button className='ml-4 text-slate-100 hover:opacity-50 outline-none data-[focus-visible]:ring data-[focus-visible]:ring-green-300 data-[pressed]:scale-95'>
             <CalendarDaysIcon className='h-10 w-10' />
           </Button>
         </Group>
-        <FieldError>{errorMessage}</FieldError>
+        <FieldError className='ml-5 text-red-500'>{errorMessage}</FieldError>
         <Popover>
           <Dialog>
             <Calendar
               className='p-4 mb-10 mr-3 bg-zinc-900 text-slate-100 rounded-xl 
          shadow-2xl'
             >
-              <header className='flex justify-evenly mb-4'>
-                <Button slot='previous'>
+              <header className='flex items-center mb-4'>
+                <Button
+                  className='hover:opacity-50 outline-none data-[focus-visible]:ring data-[focus-visible]:ring-orange-300 data-[pressed]:scale-95'
+                  slot='previous'
+                >
                   <ChevronLeftIcon className='h-8 w-8' />
                 </Button>
-                <Heading />
-                <Button slot='next'>
+                <Heading className='flex-1 text-center' />
+                <Button
+                  className='hover:opacity-50 outline-none data-[focus-visible]:ring data-[focus-visible]:ring-orange-300 data-[pressed]:scale-95'
+                  slot='next'
+                >
                   <ChevronRightIcon className='h-8 w-8' />
                 </Button>
               </header>
@@ -72,6 +76,7 @@ export function CalendarPicker<T extends DateValue>({
                   />
                 )}
               </CalendarGrid>
+              <Text slot='errorMessage' />
             </Calendar>
           </Dialog>
         </Popover>

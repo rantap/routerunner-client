@@ -3,7 +3,7 @@ import MobileMenu from './MobileMenu';
 
 const Navbar = () => {
   return (
-    <nav className='z-50 sticky top-0 left-0 w-screen bg-zinc-800 text-slate-100 drop-shadow-lg sm:h-20 sm:flex sm:items-center'>
+    <nav className='z-50 sticky top-0 left-0 right-0 w-screen bg-zinc-800 text-slate-100 drop-shadow-lg sm:h-20 sm:flex sm:items-center sm:w-full'>
       <div className='flex p-4 items-center justify-between'>
         <h1 className='ml-2 text-3xl font-bold tracking-tighter sm:ml-10'>Routerunner</h1>
         {/* MOBILE MENU */}

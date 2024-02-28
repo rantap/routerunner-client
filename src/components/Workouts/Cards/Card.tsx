@@ -25,13 +25,13 @@ const Card = ({ workout }: Props) => {
     mutation.mutate(id);
   };
   return (
-    <>
-      <div className='bg-zinc-800 rounded-lg mt-2'>
-        <p className='text-slate-300 text-sm ml-2 pt-2 lg:ml-4 lg:pt-4'>
-          {new Date(workout.date).toLocaleDateString('en-GB')}
-        </p>
+    <div className='mx-auto mt-3 md:5/6 lg:w-4/6'>
+      <p className='ml-2 text-sm text-slate-300'>
+        {new Date(workout.date).toLocaleDateString('en-GB')}
+      </p>
+      <div className='pt-4 bg-zinc-800 rounded-lg'>
         <div
-          className='flex flex-wrap justify-between pt-4 pb-10 px-6 text-slate-100 hover:cursor-pointer md:px-24 lg:px-32 sm:pt-0 sm:pb-8'
+          className='flex flex-wrap justify-between px-6 pt-4 pb-8 text-slate-100 hover:cursor-pointer sm:pt-0 sm:pb-4'
           onClick={() => setExpanded(!isExpanded)}
         >
           <p>{workout.type}</p>
@@ -49,24 +49,27 @@ const Card = ({ workout }: Props) => {
           } transition-opacity ease-in-out duration-500`}
         >
           {isExpanded && (
-            <div className='flex justify-end pb-2 px-6'>
-              <span className='text-sm text-slate-100 mr-10 my-1 md:text-base md:my-3 md:mx'>
+            <div className='flex justify-between pb-2 px-6 sm:pt-4'>
+              <span className='text-sm text-slate-100 mr-4 my-1 md:text-base'>
                 Average pace: {formatDuration(calculateAvgPace(workout.duration, workout.distance))}{' '}
                 /km
               </span>
-              <EditModal workout={workout} />
-              {/* TODO: separate into own component -- add delete confirmation prompt */}
-              <Button
-                onPress={() => handleDelete(workout.id)}
-                className='mb-4 p-4 bg-red-400 text-black rounded-full transition ease-linear duration-300 hover:scale-105 hover:bg-red-500 '
-              >
-                <TrashIcon className='mx-auto h-5 w-5' />
-              </Button>
+              <div className='flex'>
+                <EditModal workout={workout} />
+                {/* TODO: separate into own component -- add delete confirmation prompt */}
+                <Button
+                  onPress={() => handleDelete(workout.id)}
+                  className='mb-4 p-4 bg-red-400 text-black rounded-full hover:bg-red-500 outline-none data-[focus-visible]:ring data-[focus-visible]:ring-orange-300'
+                  aria-label='delete'
+                >
+                  <TrashIcon className='mx-auto h-5 w-5' />
+                </Button>
+              </div>
             </div>
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 export default Card;

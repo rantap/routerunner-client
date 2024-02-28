@@ -14,7 +14,8 @@ const EditModal = ({ workout }: Props) => {
     <DialogTrigger>
       <Button
         onPress={() => setOpen(true)}
-        className='mb-4 p-4 mr-4 bg-yellow-300 text-black rounded-full transition ease-in-out hover:scale-105 hover:bg-yellow-400 duration-300'
+        className='mb-4 mr-4 p-4 bg-yellow-300 text-black rounded-full hover:bg-yellow-400 outline-none data-[focus-visible]:ring data-[focus-visible]:ring-orange-300 data-[pressed]:scale-95'
+        aria-label='edit'
       >
         <PencilSquareIcon className='mx-auto h-5 w-5' />
       </Button>
@@ -24,9 +25,12 @@ const EditModal = ({ workout }: Props) => {
         onOpenChange={setOpen}
         className='fixed top-20 inset-0 bg-black/50'
       >
-        <Modal className='fixed top-20 inset-0 mt-2 pt-8 pb-36 w-full h-full text-left overflow-scroll sm:w-2/5 sm:mx-auto sm:overflow-hidden'>
-          <Dialog>
-            <Button className='absolute right-0 my-3 mx-6' onPress={() => setOpen(false)}>
+        <Modal className='fixed top-20 inset-0 mt-2 pr-8 pt-8 pb-36 text-left overflow-scroll sm:w-2/5 sm:mx-auto sm:overflow-hidden'>
+          <Dialog className='outline-none data-[focus-visible]:ring data-[focus-visible]:ring-orange-300'>
+            <Button
+              className='absolute right-0 mx-14 my-3 outline-none data-[focus-visible]:ring data-[focus-visible]:ring-orange-300'
+              onPress={() => setOpen(false)}
+            >
               <XMarkIcon className='h-10 w-10 text-slate-100' />
             </Button>
             <EditForm setOpen={setOpen} workout={workout} />
