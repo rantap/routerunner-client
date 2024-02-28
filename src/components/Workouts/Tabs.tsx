@@ -21,7 +21,7 @@ const WorkoutTabs = () => {
         </Tab>
       </TabList>
       <TabPanel id='All'>
-        <div className='flex justify-center mb-8 text-zinc-900'>
+        <div className='flex justify-center mb-4 text-zinc-900'>
           <AddModal />
         </div>
         <CardList />

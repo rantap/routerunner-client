@@ -2,16 +2,16 @@ import { useState } from 'react';
 import { Button } from 'react-aria-components';
 import { CalendarRangePicker } from './Calendar/CalendarRangePicker';
 import { Spinner } from '../UI/Spinner';
-import { today, startOfWeek, parseDate, getLocalTimeZone } from '@internationalized/date';
+import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
+import { today, startOfWeek, parseDate } from '@internationalized/date';
 import { useQuery } from '@tanstack/react-query';
 import { fetchTotals } from '../../api/workouts';
-import { Total } from '../../types';
-import { formatDuration } from '../../utils/formatDuration';
+import TotalsTable from './TotalsTable';
 
 const Totals = () => {
   const [date, setDate] = useState({
-    start: startOfWeek(parseDate(today(getLocalTimeZone()).toString()), 'gb-GB'),
-    end: today(getLocalTimeZone()),
+    start: startOfWeek(parseDate(today('UTC').toString()), 'gb-GB'),
+    end: today('UTC'),
   });
   const { isLoading, isError, error, data, refetch } = useQuery({
     queryKey: ['workouts'],
@@ -19,28 +19,33 @@ const Totals = () => {
     enabled: false,
     retry: false,
   });
-
+  const totals = data;
   return (
-    <>
-      <p>Workout dates</p>
-      <CalendarRangePicker
-        value={date}
-        onChange={setDate}
-        maxValue={today(getLocalTimeZone())}
-        defaultValue={{
-          start: date.start,
-          end: date.end,
-        }}
-        aria-label='Workout dates'
-      />
-      <div className='flex justify-center'>
-        <Button
-          onPress={() => refetch()}
-          className='mt-6 px-12 py-2 bg-green-300 text-zinc-900 rounded-full transition ease-in-out duration-300 hover:scale-105 hover:bg-green-400 outline-none data-[focus-visible]:ring data-[focus-visible]:ring-orange-300'
-        >
-          Search
-        </Button>
-      </div>
+    <div className='mb-10'>
+      <>
+        <p>Workout dates</p>
+
+        <CalendarRangePicker
+          value={date}
+          onChange={setDate}
+          maxValue={today('UTC')}
+          defaultValue={{
+            start: date.start,
+            end: date.end,
+          }}
+          aria-label='Workout dates'
+        />
+
+        <div className='flex justify-center'>
+          <Button
+            onPress={() => refetch()}
+            className='flex mt-6 px-8 py-2 bg-green-300 text-zinc-900 rounded-full hover:bg-green-400 outline-none data-[focus-visible]:ring data-[focus-visible]:ring-orange-300 data-[pressed]:scale-95'
+          >
+            <MagnifyingGlassIcon className='h-8 w-8 mr-2' />
+            <p className='my-auto tracking-tighter'>Search</p>
+          </Button>
+        </div>
+      </>
       {isLoading ? (
         <div className='m-12 text-center'>
           <Spinner />
@@ -59,18 +64,10 @@ const Totals = () => {
             <span> to </span>
             <span>{date.end.toString()}</span>
           </div>
-          <div className='mt-2 p-4 bg-zinc-800 rounded-lg'>
-            {data.map((total: Total) => (
-              <div className='flex' key={total.type}>
-                <p className='mr-8'>{total.type}</p>
-                <p className='mr-8'>{formatDuration(total._sum.duration)}</p>
-                <p>{total._sum.distance} km </p>
-              </div>
-            ))}
-          </div>
+          <TotalsTable totals={totals} />
         </>
       )}
-    </>
+    </div>
   );
 };
 export default Totals;
