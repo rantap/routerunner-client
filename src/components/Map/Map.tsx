@@ -48,6 +48,8 @@ const Map: React.FC = () => {
       });
       directions.interactive = true;
     });
+    // Reset distance when profile changes
+    setTotalDistance(0);
   }, [profile]);
 
   return (
@@ -58,7 +60,7 @@ const Map: React.FC = () => {
             onPress={() => {
               setProfile('walking');
             }}
-            className={`px-8 py-2 border-2 border-green-300 text-slate-100 rounded-full outline-none data-[focus-visible]:ring data-[focus-visible]:ring-orange-300 lg:mr-4 ${
+            className={`px-8 py-2 border-2 border-green-300 text-slate-100 rounded-full hover:bg-green-300 hover:text-zinc-900 outline-none data-[focus-visible]:ring data-[focus-visible]:ring-orange-300 lg:mr-4 ${
               profile === 'walking' ? 'bg-green-300 text-zinc-900' : ''
             }`}
           >
@@ -68,7 +70,7 @@ const Map: React.FC = () => {
             onPress={() => {
               setProfile('cycling');
             }}
-            className={`px-8 py-2 border-2 border-green-300 text-slate-100 rounded-full outline-none data-[focus-visible]:ring data-[focus-visible]:ring-orange-300 lg:mr-4 ${
+            className={`px-8 py-2 border-2 border-green-300 text-slate-100 rounded-full hover:bg-green-300 hover:text-zinc-900 outline-none data-[focus-visible]:ring data-[focus-visible]:ring-orange-300 lg:mr-4 ${
               profile === 'cycling' ? 'bg-green-300 text-zinc-900' : ''
             }`}
           >
