@@ -1,15 +1,13 @@
+import { HelpButton } from '../components/Map/Help/HelpButton';
 import Map from '../components/Map/Map';
 
 const Routeplanner = () => {
   return (
     <>
-      <h1 className='m-6 text-center text-slate-100 text-2xl font-bold tracking-tighter'>
-        Create a route
-      </h1>
-      <p className='mx-6 mb-6 text-center text-slate-100'>
-        Plan your own route by creating waypoints on the map. Touch/click the desired spot to create
-        a waypoint. Touch/click a waypoint to remove it.
-      </p>
+      <div className='flex justify-center my-6 lg:mb-0'>
+        <h1 className='mr-2 text-slate-100 text-2xl font-bold tracking-tighter'>Create a route</h1>
+        <HelpButton />
+      </div>
       <Map />
     </>
   );
