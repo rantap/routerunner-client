@@ -25,7 +25,7 @@ const Card = ({ workout }: Props) => {
     mutation.mutate(id);
   };
   return (
-    <div className='mx-auto mt-3 md:5/6 lg:w-4/6'>
+    <div className='mx-auto mt-3 md:5/6 lg:w-6/6'>
       <p className='ml-2 text-sm text-slate-300'>
         {new Date(workout.date).toLocaleDateString('en-GB')}
       </p>

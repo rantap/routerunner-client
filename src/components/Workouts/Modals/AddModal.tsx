@@ -10,7 +10,7 @@ const AddModal = () => {
     <DialogTrigger>
       <Button
         onPress={() => setOpen(true)}
-        className='flex mt-6 px-8 py-3 bg-green-300 rounded-full hover:bg-green-400 outline-none data-[focus-visible]:ring data-[focus-visible]:ring-orange-300 data-[pressed]:scale-95'
+        className='flex mt-6 px-8 py-3 bg-green-300 rounded-full hover:bg-green-400 outline-none data-[focus-visible]:ring data-[focus-visible]:ring-orange-300 data-[pressed]:scale-95 lg:mt-0'
       >
         <DocumentPlusIcon className='h-8 w-8 mr-2' />
         <p className='my-auto tracking-tighter'>Add a workout</p>
