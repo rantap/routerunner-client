@@ -40,7 +40,7 @@ export function CalendarRangePicker<T extends DateValue>({
         <Group className='flex justify-center mb-2 focus:ring focus:ring-green-300'>
           <DateInput
             slot='start'
-            className='flex px-2 py-2 bg-zinc-900 text-slate-100 rounded-md border border-slate-100/50 w-full data-[focus-visible]:ring data-[focus-visible]:ring-green-300 data-[focus-within]:ring data-[focus-within]:ring-green-300'
+            className='flex px-2 py-2 bg-zinc-800 text-slate-100 rounded w-full data-[focus-visible]:ring data-[focus-visible]:ring-green-300 data-[focus-within]:ring data-[focus-within]:ring-green-300'
           >
             {(segment) => (
               <DateSegment
@@ -54,7 +54,7 @@ export function CalendarRangePicker<T extends DateValue>({
           </span>
           <DateInput
             slot='end'
-            className='flex px-2 py-2 bg-zinc-900 text-slate-100 rounded-md border border-slate-100/50 w-full data-[focus-visible]:ring data-[focus-visible]:ring-green-300 data-[focus-within]:ring data-[focus-within]:ring-green-300 '
+            className='flex px-2 py-2 bg-zinc-800 text-slate-100 rounded w-full data-[focus-visible]:ring data-[focus-visible]:ring-green-300 data-[focus-within]:ring data-[focus-within]:ring-green-300 '
           >
             {(segment) => (
               <DateSegment
@@ -72,7 +72,7 @@ export function CalendarRangePicker<T extends DateValue>({
         <Popover>
           <Dialog>
             <RangeCalendar
-              className='mr-3 p-4 bg-zinc-900 text-slate-100 rounded-xl 
+              className='mr-3 p-4 bg-zinc-800 text-slate-100 rounded-xl 
           shadow-2xl'
             >
               <header className='flex items-center mb-4'>
@@ -85,7 +85,7 @@ export function CalendarRangePicker<T extends DateValue>({
                 <Heading className='flex-1 text-center' />
                 <Button
                   slot='next'
-                  className='hover:opacity-50 outline-none data-[focus-visible]:ring data-[focus-visible]:ring-orange-300 data-[pressed]:scale-95 disabled:hidden'
+                  className='hover:opacity-50 outline-none data-[focus-visible]:ring data-[focus-visible]:ring-orange-300 data-[pressed]:scale-95 disabled:invisible'
                 >
                   <ChevronRightIcon className='h-8 w-8' />
                 </Button>

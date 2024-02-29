@@ -34,7 +34,7 @@ export function CalendarPicker<T extends DateValue>({
       <DatePicker {...props} className='group flex flex-col gap-1 w-full'>
         <Label className='ml-6 text-slate-100'>{label}</Label>
         <Group className='flex mx-4 mb-2'>
-          <DateInput className='flex px-2 py-2 bg-zinc-700 text-slate-100 rounded  w-full outline-none data-[focus-visible]:ring data-[focus-visible]:ring-green-300 data-[focus-within]:ring data-[focus-within]:ring-green-300'>
+          <DateInput className='flex px-2 py-2 bg-zinc-700 text-slate-100 rounded w-full outline-none data-[focus-visible]:ring data-[focus-visible]:ring-green-300 data-[focus-within]:ring data-[focus-within]:ring-green-300'>
             {(segment) => (
               <DateSegment
                 className='rounded ml-1 outline-none focus:bg-green-300 focus:text-zinc-900'
@@ -50,7 +50,7 @@ export function CalendarPicker<T extends DateValue>({
         <Popover>
           <Dialog>
             <Calendar
-              className='p-4 mb-10 mr-3 bg-zinc-900 text-slate-100 rounded-xl 
+              className='p-4 mb-10 mr-3 bg-zinc-800 text-slate-100 rounded-xl 
          shadow-2xl'
             >
               <header className='flex items-center mb-4'>
@@ -62,7 +62,7 @@ export function CalendarPicker<T extends DateValue>({
                 </Button>
                 <Heading className='flex-1 text-center' />
                 <Button
-                  className='hover:opacity-50 outline-none data-[focus-visible]:ring data-[focus-visible]:ring-orange-300 data-[pressed]:scale-95'
+                  className='hover:opacity-50 outline-none data-[focus-visible]:ring data-[focus-visible]:ring-orange-300 data-[pressed]:scale-95 disabled:invisible'
                   slot='next'
                 >
                   <ChevronRightIcon className='h-8 w-8' />

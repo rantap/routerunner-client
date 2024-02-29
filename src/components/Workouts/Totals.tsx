@@ -19,12 +19,11 @@ const Totals = () => {
     enabled: false,
     retry: false,
   });
-  const totals = data;
+
   return (
     <div className='mb-10'>
       <>
         <p>Workout dates</p>
-
         <CalendarRangePicker
           value={date}
           onChange={setDate}
@@ -35,7 +34,6 @@ const Totals = () => {
           }}
           aria-label='Workout dates'
         />
-
         <div className='flex justify-center'>
           <Button
             onPress={() => refetch()}
@@ -60,11 +58,11 @@ const Totals = () => {
       ) : (
         <>
           <div className='mt-8 text-center'>
-            <span>{date.start.toString()}</span>
-            <span> to </span>
-            <span>{date.end.toString()}</span>
+            <span>{new Date(date.start.toString()).toDateString()}</span>
+            <span> - </span>
+            <span>{new Date(date.end.toString()).toDateString()}</span>
           </div>
-          <TotalsTable totals={totals} />
+          <TotalsTable totals={data} />
         </>
       )}
     </div>

@@ -28,8 +28,7 @@ td {
   box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
 }
 .stadiamaps-search-box .input-container .cancel {
-  background: red;
-  opacity: 1;
+  display: none;
 }
 /* .react-aria-Input {
   visibility: visible;
