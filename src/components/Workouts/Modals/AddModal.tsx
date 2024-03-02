@@ -21,7 +21,7 @@ const AddModal = () => {
         onOpenChange={setOpen}
         className='fixed top-20 inset-0 bg-black/50 data-[entering]:animate-fade-in'
       >
-        <Modal className='fixed top-20 inset-0 mt-2 pr-8 pt-8 pb-36 text-left data-[entering]:animate-slide-in data-[exiting]:animate-slide-out sm:w-2/5 lg:w-2/6 sm:mx-auto sm:pt-6 sm:overflow-hidden sm:data-[entering]:animate-zoom sm:data-[exiting]:animate-none'>
+        <Modal className='fixed top-20 inset-0 mt-2 pr-8 pt-8 pb-36 text-left overflow-scroll data-[entering]:animate-slide-in data-[exiting]:animate-slide-out sm:w-2/5 lg:w-2/6 sm:mx-auto sm:pt-6 sm:overflow-hidden sm:data-[entering]:animate-zoom sm:data-[exiting]:animate-none'>
           <Dialog className='outline-none data-[focus-visible]:ring data-[focus-visible]:ring-orange-300'>
             <Button
               className='absolute right-0 mx-14 my-3 outline-none data-[focus-visible]:ring data-[focus-visible]:ring-orange-300'
