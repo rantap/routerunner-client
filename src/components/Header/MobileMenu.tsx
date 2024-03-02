@@ -17,9 +17,9 @@ const MobileMenu = () => {
         isDismissable
         isOpen={isOpen}
         onOpenChange={setOpen}
-        className='z-50 top-[5.5rem] fixed inset-0 text-xl text-slate-100 backdrop-contrast-75'
+        className='z-50 top-[5.5rem] fixed inset-0 text-xl text-slate-100 backdrop-blur bg-black/50 data-[entering]:animate-blur-in data-[exiting]:animate-blur-out'
       >
-        <Modal className='z-50 fixed  w-9/12 h-screen bg-zinc-800'>
+        <Modal className='z-50 fixed  w-9/12 h-screen bg-zinc-800 data-[entering]:animate-slide-in data-[exiting]:animate-slide-out'>
           <Dialog className='outline-none data-[focus-visible]:outline-solid data-[focus-visible]:outline-2 data-[focus-visible]:outline-slate-100'>
             <NavLink
               to='/'
