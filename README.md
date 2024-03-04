@@ -2,7 +2,7 @@
 
 ## [Open project](https://routerunner.netlify.app/)
 
-Plan your running/walking routes and add them to your workout log (under construction)
+Plan your running/walking/cycling routes and add them to your workout log
 
 ## Tech stack
 
@@ -12,13 +12,15 @@ Plan your running/walking routes and add them to your workout log (under constru
 - Tailwind CSS
 - MapLibre
 
-## Installation
+## Usage
 
-`npm i`
+```bash
+# Install dependencies
+npm install
 
-## Run
-
-`npm run dev`
+# Run in dev mode
+npm run dev
+```
 
 ## UI
 
