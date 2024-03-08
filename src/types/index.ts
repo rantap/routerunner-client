@@ -1,3 +1,8 @@
+export interface Data {
+  numOfPages: number;
+  hasMorePages: boolean;
+  workouts: Array<Workout>;
+}
 export interface Workout {
   id: number;
   type: string;
