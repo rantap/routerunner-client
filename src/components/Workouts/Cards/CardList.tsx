@@ -1,20 +1,17 @@
-import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { Workout } from '../../../types';
-import { fetchWorkouts } from '../../../api/workouts';
 import Card from './Card';
 import { Spinner } from '../../UI/Spinner';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
-import { useState } from 'react';
 import { Button } from 'react-aria-components';
+import { useWorkouts } from '../../../hooks/useWorkouts';
 
-const CardList = () => {
-  const [page, setPage] = useState(1);
-  const results: number = 5;
-  const { isPending, isError, error, data, isPlaceholderData } = useQuery({
-    queryKey: ['workouts', page, results],
-    queryFn: () => fetchWorkouts(page, results),
-    placeholderData: keepPreviousData,
-  });
+type Props = {
+  results: number;
+  page: number;
+  setPage: (value: number | ((prev: number) => number)) => void;
+};
+const CardList = ({ results, page, setPage }: Props) => {
+  const { isPending, isError, error, data, isPlaceholderData } = useWorkouts(page, results);
 
   return (
     <>
