@@ -4,24 +4,20 @@ import { CalendarRangePicker } from './Calendar/CalendarRangePicker';
 import { Spinner } from '../UI/Spinner';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
 import { today, startOfWeek, parseDate } from '@internationalized/date';
-import { useQuery } from '@tanstack/react-query';
-import { fetchTotals } from '../../api/workouts';
 import TotalsTable from './TotalsTable';
+import { useTotalWorkouts } from '../../hooks/useWorkouts';
 
 const Totals = () => {
   const [date, setDate] = useState({
     start: startOfWeek(parseDate(today('UTC').toString()), 'gb-GB'),
     end: today('UTC'),
   });
-  const { isLoading, isError, error, data, refetch } = useQuery({
-    queryKey: ['workouts'],
-    queryFn: () => fetchTotals(date.start.toString(), date.end.toString()),
-    enabled: false,
-    retry: false,
-  });
-
+  const { isLoading, isError, error, data, refetch } = useTotalWorkouts(
+    date.start.toString(),
+    date.end.toString(),
+  );
   return (
-    <div className='mb-10'>
+    <div className='mb-10 lg:mb-32'>
       <>
         <p>Workout dates</p>
         <CalendarRangePicker
