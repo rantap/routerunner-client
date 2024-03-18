@@ -1,7 +1,7 @@
 import { Tab, TabList, TabPanel, Tabs } from 'react-aria-components';
-import CardList from './Cards/CardList';
 import Totals from './Totals';
 import AddModal from './Modals/AddModal';
+import AllWorkouts from './AllWorkouts';
 
 const WorkoutTabs = () => {
   return (
@@ -24,7 +24,7 @@ const WorkoutTabs = () => {
         <div className='flex justify-center mb-4 text-zinc-900'>
           <AddModal />
         </div>
-        <CardList />
+        <AllWorkouts />
       </TabPanel>
       <TabPanel id='Totals' className='mt-6'>
         <Totals />
