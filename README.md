@@ -2,8 +2,6 @@
 
 ## [Open project](https://routerunner.netlify.app/)
 
-Plan your running/walking/cycling routes and add them to your workout log
-
 ## Tech stack
 
 - TypeScript
