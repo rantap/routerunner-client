@@ -1,6 +1,8 @@
-# React routeplanner/workout log
+# React workout log/routerplanner
 
 ## [Open project](https://routerunner.netlify.app/)
+
+Workout log with total exercise data search, Recharts visual presentation, and routeplanner for running/cycling.
 
 ## Tech stack
 
