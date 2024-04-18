@@ -1,4 +1,4 @@
-# React workout log/routerplanner
+# React workout log/routeplanner
 
 ## [Open project](https://routerunner.netlify.app/)
 
