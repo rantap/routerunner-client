@@ -17,7 +17,7 @@ const Totals = () => {
     date.end.toString(),
   );
   return (
-    <div className='mb-10 lg:mb-32'>
+    <div className='mb-10 lg:mb-32 lg:w-1/2 lg:mx-auto'>
       <>
         <p>Workout dates</p>
         <CalendarRangePicker

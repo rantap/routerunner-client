@@ -1,7 +1,5 @@
-import AllWorkouts from '../components/Workouts/AllWorkouts';
 import AddModal from '../components/Workouts/Modals/AddModal';
 import Tabs from '../components/Workouts/Tabs';
-import Totals from '../components/Workouts/Totals';
 
 const Workouts = () => {
   return (
@@ -21,11 +19,7 @@ const Workouts = () => {
           <div className='flex justify text-zinc-900'>
             <AddModal />
           </div>
-          <AllWorkouts />
-        </div>
-        <div className='w-1/2'>
-          <h2 className='mt-4 mb-8 text-center text-lg font-bold tracking-widest'>Totals</h2>
-          <Totals />
+          <Tabs />
         </div>
       </div>
     </div>
