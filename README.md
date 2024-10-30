@@ -1,6 +1,6 @@
 # React workout log/routeplanner
 
-## [Open project](https://routerunner.netlify.app/)
+## [Open project](https://routerunner.netlify.app/) (takes a while to load data when a cold start occurs)
 
 Workout log with total exercise data search, Recharts visual presentation, and routeplanner for running/cycling.
 
