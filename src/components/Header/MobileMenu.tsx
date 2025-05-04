@@ -2,6 +2,7 @@ import { Bars2Icon, XMarkIcon } from '@heroicons/react/24/solid';
 import { useState } from 'react';
 import { DialogTrigger, Button, ModalOverlay, Modal, Dialog } from 'react-aria-components';
 import { NavLink } from 'react-router-dom';
+import { ThemeToggle } from './ThemeToggle/ThemeToggle';
 
 const MobileMenu = () => {
   const [isOpen, setOpen] = useState(false);
@@ -35,6 +36,9 @@ const MobileMenu = () => {
             >
               Create a route
             </NavLink>
+            <div className='block mt-2 py-2 px-2'>
+              <ThemeToggle />
+            </div>
           </Dialog>
         </Modal>
       </ModalOverlay>
