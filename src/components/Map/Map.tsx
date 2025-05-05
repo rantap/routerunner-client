@@ -60,8 +60,10 @@ const Map: React.FC = () => {
             onPress={() => {
               setProfile('walking');
             }}
-            className={`px-8 py-2 border-2 border-green-300 text-slate-100 rounded-full hover:bg-green-300 hover:text-zinc-900 outline-none data-[focus-visible]:ring data-[focus-visible]:ring-orange-300 lg:mr-4 ${
-              profile === 'walking' ? 'bg-green-300 text-zinc-900' : ''
+            className={`px-8 py-2 bo9der-2 border-zinc-900 dark:border-slate-50 rounded-full hover:bg-zinc-900 hover:text-slate-50 dark:hover:bg-slate-50 dark:hover:text-zinc-800  outline-none data-[focus-visible]:ring data-[focus-visible]:ring-orange-300 lg:mr-4 ${
+              profile === 'walking'
+                ? 'bg-zinc-900 text-slate-50 dark:bg-slate-50 dark:text-zinc-900'
+                : 'text-zinc-900 dark:text-slate-50'
             }`}
           >
             Running
@@ -70,15 +72,17 @@ const Map: React.FC = () => {
             onPress={() => {
               setProfile('cycling');
             }}
-            className={`px-8 py-2 border-2 border-green-300 text-slate-100 rounded-full hover:bg-green-300 hover:text-zinc-900 outline-none data-[focus-visible]:ring data-[focus-visible]:ring-orange-300 lg:mr-4 ${
-              profile === 'cycling' ? 'bg-green-300 text-zinc-900' : ''
+            className={`px-8 py-2 border-2 border-zinc-900 dark:border-slate-100 rounded-full hover:bg-zinc-900 hover:text-slate-50 dark:hover:bg-slate-50 dark:hover:text-zinc-900 outline-none data-[focus-visible]:ring data-[focus-visible]:ring-orange-300 lg:mr-4 ${
+              profile === 'cycling'
+                ? 'bg-zinc-900 text-slate-50 dark:bg-slate-50 dark:text-zinc-900'
+                : 'text-zinc-900 dark:text-slate-50'
             }`}
           >
             Cycling
           </Button>
         </div>
         <div className='mt-4 mb-16'>
-          <h1 className='absolute z-10 px-3 py-1 mx-2 bg-zinc-900 opacity-80 rounded-b-md text-slate-100 font-light'>
+          <h1 className='px-3 py-1 m-auto bg-slate-50 text-zinc-900 dark:bg-zinc-900 dark:text-slate-50 rounded-b-md '>
             Total distance: {formatDistance(totalDistance)}
           </h1>
           <div ref={mapRef} className='h-[65vh] rounded-xl z-0' />

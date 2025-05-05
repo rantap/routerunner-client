@@ -7,7 +7,7 @@ interface HelpPopoverProps extends Omit<PopoverProps, 'children'> {
 export function HelpPopover({ children, ...props }: HelpPopoverProps) {
   return (
     <Popover {...props}>
-      <OverlayArrow className='fill-slate-100 stroke-slate-100'>
+      <OverlayArrow className='fill-zinc-800 stroke-zinc-800 dark:fill-slate-100 dark:stroke-slate-100 '>
         <svg width={12} height={12} viewBox='0 0 12 16'>
           <path d='M0 0 L6 6 L12 0' />
         </svg>

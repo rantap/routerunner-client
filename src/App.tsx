@@ -8,15 +8,17 @@ const queryClient = new QueryClient();
 
 const App = () => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path='/' element={<Workouts />} />
-          <Route path='/routeplanner' element={<Routeplanner />} />
-        </Routes>
-      </BrowserRouter>
-    </QueryClientProvider>
+    <div className='bg-slate-50 text-zinc-900 dark:bg-zinc-900 dark:text-slate-50'>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route path='/' element={<Workouts />} />
+            <Route path='/routeplanner' element={<Routeplanner />} />
+          </Routes>
+        </BrowserRouter>
+      </QueryClientProvider>
+    </div>
   );
 };
 

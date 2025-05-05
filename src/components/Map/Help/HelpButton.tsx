@@ -7,12 +7,12 @@ export const HelpButton = () => {
     <DialogTrigger>
       <Button
         aria-label='Help'
-        className='text-slate-100 rounded-full sm:hover:opacity-50 outline-none data-[focus-visible]:ring data-[focus-visible]:ring-orange-300'
+        className='rounded-full sm:hover:opacity-50 outline-none data-[focus-visible]:ring data-[focus-visible]:ring-orange-300'
       >
         <QuestionMarkCircleIcon className='w-8 h-8' />
       </Button>
-      <HelpPopover className='p-6 bg-zinc-800 rounded-lg w-5/6 sm:w-fit shadow-2xl'>
-        <span className='text-center text-slate-100'>
+      <HelpPopover className='p-6 bg-slate-100 dark:bg-zinc-800 dark:text-slate-100 rounded-lg dark:outline-slate-100 w-5/6 sm:w-fit shadow-2xl'>
+        <span className='text-center'>
           <p>Plan your route by creating waypoints on the map:</p>
           <br />
           <ul className='text-left mx-10 list-disc'>
