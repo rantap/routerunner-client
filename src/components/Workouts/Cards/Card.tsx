@@ -4,7 +4,11 @@ import { deleteWorkout } from '../../../api/workouts';
 import { formatDuration } from '../../../utils/formatDuration';
 import { calculateAvgPace } from '../../../utils/calculateAvgPace';
 import { Button } from 'react-aria-components';
-import { ChevronUpIcon, ChevronDownIcon, TrashIcon } from '@heroicons/react/24/solid';
+import {
+  ChevronUpIcon,
+  ChevronDownIcon,
+  TrashIcon,
+} from '@heroicons/react/24/solid';
 import { Workout } from '../../../types';
 import EditModal from '../Modals/EditModal';
 
@@ -25,13 +29,13 @@ const Card = ({ workout }: Props) => {
     mutation.mutate(id);
   };
   return (
-    <div className='mx-auto mt-3 md:5/6 lg:w-6/6'>
-      <p className='ml-2 text-sm text-slate-300'>
+    <div className='md:5/6 lg:w-6/6 mx-auto mt-3'>
+      <p className='ml-2 text-sm text-slate-700 dark:text-slate-200'>
         {new Date(workout.date).toLocaleDateString('en-GB')}
       </p>
-      <div className='pt-4 bg-zinc-800 rounded-lg'>
+      <div className='rounded-lg bg-slate-50 pt-4 shadow-md dark:bg-zinc-800'>
         <div
-          className='flex flex-wrap justify-between px-6 pt-4 pb-8 text-slate-100 hover:cursor-pointer sm:pt-0 sm:pb-4'
+          className='flex flex-wrap justify-between px-6 pb-8 pt-4 text-slate-700 hover:cursor-pointer dark:text-slate-200 sm:pb-4 sm:pt-0'
           onClick={() => setExpanded(!isExpanded)}
         >
           <p>{workout.type}</p>
@@ -46,12 +50,15 @@ const Card = ({ workout }: Props) => {
         <div
           className={`${
             isExpanded ? 'opacity-100' : 'opacity-0'
-          } transition-opacity ease-in-out duration-500`}
+          } transition-opacity duration-500 ease-in-out`}
         >
           {isExpanded && (
-            <div className='flex justify-between pb-2 px-6 sm:pt-4'>
-              <span className='text-sm text-slate-100 mr-4 my-1 md:text-base'>
-                Average pace: {formatDuration(calculateAvgPace(workout.duration, workout.distance))}{' '}
+            <div className='flex justify-between px-6 pb-2 sm:pt-4'>
+              <span className='my-1 mr-4 text-sm text-slate-700 dark:text-slate-200 md:text-base'>
+                Average pace:{' '}
+                {formatDuration(
+                  calculateAvgPace(workout.duration, workout.distance),
+                )}{' '}
                 /km
               </span>
               <div className='flex'>
@@ -59,7 +66,7 @@ const Card = ({ workout }: Props) => {
                 {/* TODO: separate into own component -- add delete confirmation prompt */}
                 <Button
                   onPress={() => handleDelete(workout.id)}
-                  className='mb-4 p-4 bg-red-400 text-black rounded-full hover:bg-red-500 outline-none data-[focus-visible]:ring data-[focus-visible]:ring-orange-300'
+                  className='mb-4 rounded-full bg-red-400 p-4 text-black shadow-md outline-none hover:bg-red-500 data-[focus-visible]:ring data-[focus-visible]:ring-orange-300'
                   aria-label='delete'
                 >
                   <TrashIcon className='mx-auto h-5 w-5' />

@@ -19,8 +19,12 @@ const Chart = ({ data }: Props) => {
     date: new Date(workout.date).toLocaleDateString('en-GB'),
   }));
   return (
-    <div className='w-full h-[200px] lg:h-[400px]'>
-      <ResponsiveContainer minWidth='0' minHeight='undefined' aspect={undefined}>
+    <div className='h-[200px] w-full lg:h-[400px]'>
+      <ResponsiveContainer
+        minWidth='0'
+        minHeight='undefined'
+        aspect={undefined}
+      >
         <LineChart
           data={workouts}
           margin={{
@@ -37,7 +41,12 @@ const Chart = ({ data }: Props) => {
               borderRadius: '0.25rem',
             }}
           />
-          <Line type='monotone' dataKey='distance' stroke='rgb(134 239 172)' activeDot={{ r: 8 }} />
+          <Line
+            type='monotone'
+            dataKey='distance'
+            stroke='rgb(134 239 172)'
+            activeDot={{ r: 8 }}
+          />
           <CartesianGrid strokeDasharray='3 3' />
           <XAxis dataKey='date' dy={10} />
           <YAxis type='number' unit=' km' domain={[0, 20]} />

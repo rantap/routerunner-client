@@ -1,5 +1,12 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { Form, TextField, Label, Input, Button, FieldError } from 'react-aria-components';
+import {
+  Form,
+  TextField,
+  Label,
+  Input,
+  Button,
+  FieldError,
+} from 'react-aria-components';
 import { useForm, Controller } from 'react-hook-form';
 import { today, toCalendarDateTime } from '@internationalized/date';
 import { addWorkout } from '../../../api/workouts';
@@ -29,18 +36,22 @@ const AddForm = ({ setOpen }: Props) => {
 
   return (
     <Form
-      className='p-4 pb-6 mb-10 bg-zinc-800 rounded-r-3xl text-left sm:rounded-3xl'
+      className='mb-10 rounded-r-3xl bg-slate-100 p-4 pb-6 text-left dark:bg-zinc-800 sm:rounded-3xl'
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className='flex justify-start'>
-        <h1 className='ml-6 text-slate-100 text-xl font-bold tracking-tighter'>Add workout</h1>
+        <h1 className='ml-6 text-xl font-bold tracking-tighter text-zinc-900 dark:text-slate-100'>
+          Add a workout
+        </h1>
       </div>
-      <TextField className='mx-4 mt-6 mb-4' name='type' isRequired>
-        <Label className='ml-2 text-slate-100'>Workout type</Label>
+      <TextField className='mx-4 mb-4 mt-6' name='type' isRequired>
+        <Label className='ml-2 text-zinc-900 dark:text-slate-100'>
+          Workout type
+        </Label>
         <Input
           {...register('type')}
           placeholder='Running'
-          className='mt-1 px-2 py-2 bg-zinc-700 text-slate-100 rounded w-full focus:outline-none focus:ring focus:ring-green-300'
+          className='mt-1 w-full rounded border border-zinc-900 bg-slate-50 px-2 py-2 text-zinc-900 focus:outline-none focus:ring focus:ring-violet-800 dark:border-zinc-600 dark:bg-zinc-700 dark:text-slate-100 dark:focus:ring-green-300'
         />
         <FieldError className='ml-2 text-red-500' />
       </TextField>
@@ -63,31 +74,36 @@ const AddForm = ({ setOpen }: Props) => {
           );
         }}
       />
-      <TextField className='mb-4 mt-2 mx-4' name='distance' isRequired>
-        <Label className='ml-2 text-slate-100'>Distance</Label>
+      <TextField className='mx-4 mb-4 mt-2' name='distance' isRequired>
+        <Label className='ml-2 text-zinc-900 dark:text-slate-100'>
+          Distance
+        </Label>
         <Input
           {...register('distance', { valueAsNumber: true })}
           placeholder='12.34'
-          className='mt-1 px-2 py-2 bg-zinc-700 text-slate-100 rounded w-full focus:outline-none focus:ring focus:ring-green-300'
+          className='mt-1 w-full rounded border border-zinc-900 bg-slate-50 px-2 py-2 text-zinc-900 focus:outline-none focus:ring focus:ring-violet-800 dark:border-zinc-600 dark:bg-zinc-700 dark:text-slate-100 dark:focus:ring-green-300'
         />
         <FieldError className='ml-2 text-red-500' />
       </TextField>
       <TextField className='mx-4 mt-2' name='duration' isRequired>
-        <Label className=' ml-2 text-slate-100'>Duration</Label>
+        <Label className='ml-2 text-zinc-900 dark:text-slate-100'>
+          Duration
+        </Label>
         <Input
           {...register('duration', {
-            setValueAs: (v) => new Date('1970-01-01T' + v + 'Z').getTime() / 1000,
+            setValueAs: (v) =>
+              new Date('1970-01-01T' + v + 'Z').getTime() / 1000,
           })}
           placeholder='hh:mm:ss'
-          className='mt-1 px-2 py-2 bg-zinc-700 text-slate-100 rounded w-full focus:outline-none focus:ring focus:ring-green-300'
+          className='mt-1 w-full rounded border border-zinc-900 bg-slate-50 px-2 py-2 text-zinc-900 focus:outline-none focus:ring focus:ring-violet-800 dark:border-zinc-600 dark:bg-zinc-700 dark:text-slate-100 dark:focus:ring-green-300'
         />
         <FieldError className='ml-2 text-red-500' />
       </TextField>
       <Button
-        className='flex ml-4 mt-8 px-6 py-3 bg-green-300 rounded-full hover:bg-green-400 outline-none data-[focus-visible]:ring data-[focus-visible]:ring-orange-300 data-[pressed]:scale-95'
+        className='dark ml-4 mt-8 flex rounded-full bg-violet-800 px-6 py-3 text-slate-50 shadow-lg outline-none hover:bg-violet-900 data-[pressed]:scale-95 data-[focus-visible]:ring data-[focus-visible]:ring-orange-300 dark:bg-green-300 dark:text-zinc-900 dark:hover:bg-green-400'
         type='submit'
       >
-        <PlusIcon className='h-6 w-6 mr-1' />
+        <PlusIcon className='mr-1 h-6 w-6' />
         <p className='tracking-tighter'>Add workout</p>
       </Button>
     </Form>

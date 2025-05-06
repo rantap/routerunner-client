@@ -1,4 +1,11 @@
-import { Cell, Column, Row, Table, TableBody, TableHeader } from 'react-aria-components';
+import {
+  Cell,
+  Column,
+  Row,
+  Table,
+  TableBody,
+  TableHeader,
+} from 'react-aria-components';
 import { Total } from '../../types';
 import { formatDuration } from '../../utils/formatDuration';
 
@@ -8,8 +15,8 @@ interface Props {
 
 const TotalsTable = ({ totals }: Props) => {
   return (
-    <Table className='mt-4 w-full bg-zinc-900' aria-label='Workouts'>
-      <TableHeader className='text-center bg-transparent border-b border-zinc-700'>
+    <Table className='mt-4 w-full' aria-label='Workouts'>
+      <TableHeader className='border-b border-zinc-700 bg-transparent text-center'>
         <Column isRowHeader>Type</Column>
         <Column>Count</Column>
         <Column>Distance</Column>
@@ -17,7 +24,7 @@ const TotalsTable = ({ totals }: Props) => {
       </TableHeader>
       <TableBody items={totals}>
         {(total) => (
-          <Row id={total.type} className='text-center text-slate-100 border-b border-zinc-800'>
+          <Row id={total.type} className='border-b border-zinc-700 text-center'>
             <Cell className='py-2'>{total.type}</Cell>
             <Cell className='py-2'>{total._count.type}</Cell>
             <Cell className='py-2'>{total._sum.distance} km</Cell>

@@ -8,7 +8,7 @@ const queryClient = new QueryClient();
 
 const App = () => {
   return (
-    <div className='bg-slate-50 text-zinc-900 dark:bg-zinc-900 dark:text-slate-50'>
+    <div className='min-h-screen bg-slate-100 text-zinc-900 dark:bg-zinc-900 dark:text-slate-100'>
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
           <Navbar />

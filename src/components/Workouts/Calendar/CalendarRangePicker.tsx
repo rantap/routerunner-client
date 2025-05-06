@@ -1,5 +1,13 @@
-import { CalendarDaysIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
-import type { DateRangePickerProps, DateValue, ValidationResult } from 'react-aria-components';
+import {
+  CalendarDaysIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+} from '@heroicons/react/24/solid';
+import type {
+  DateRangePickerProps,
+  DateValue,
+  ValidationResult,
+} from 'react-aria-components';
 import {
   Button,
   CalendarCell,
@@ -18,7 +26,8 @@ import {
 } from 'react-aria-components';
 import { I18nProvider } from 'react-aria';
 
-interface CalendarRangePickerProps<T extends DateValue> extends DateRangePickerProps<T> {
+interface CalendarRangePickerProps<T extends DateValue>
+  extends DateRangePickerProps<T> {
   label?: string;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
@@ -34,18 +43,18 @@ export function CalendarRangePicker<T extends DateValue>({
     <I18nProvider locale='en-GB'>
       <DateRangePicker
         {...props}
-        className='group flex flex-col gap-1 w-full data-[focus-ring]:outline-green-300'
+        className='group flex w-full flex-col gap-1 text-zinc-900 data-[focus-ring]:outline-green-300'
       >
-        <Label className='ml-6 text-slate-100'>{label}</Label>
-        <Group className='flex justify-center mb-2 focus:ring focus:ring-green-300'>
+        <Label className='ml-6 bg-zinc-800 dark:text-slate-100'>{label}</Label>
+        <Group className='text-zinc-900justify-center mb-2 flex focus:ring focus:ring-green-300'>
           <DateInput
             slot='start'
-            className='flex px-2 py-2 bg-zinc-800 text-slate-100 rounded w-full data-[focus-visible]:ring data-[focus-visible]:ring-green-300 data-[focus-within]:ring data-[focus-within]:ring-green-300'
+            className='flex w-full rounded border border-zinc-900 bg-slate-50 px-2 py-2 text-zinc-900 data-[focus-visible]:ring data-[focus-within]:ring data-[focus-visible]:ring-violet-800 data-[focus-within]:ring-violet-800 dark:border-zinc-700 dark:bg-zinc-800 dark:text-slate-100 dark:data-[focus-visible]:ring-green-300 dark:data-[focus-within]:ring-green-300'
           >
             {(segment) => (
               <DateSegment
                 segment={segment}
-                className='ml-1 rounded outline-none focus:bg-green-300 focus:text-zinc-900'
+                className='ml-1 rounded outline-none focus:bg-violet-300 focus:text-zinc-900 dark:focus:bg-green-300'
               />
             )}
           </DateInput>
@@ -54,16 +63,16 @@ export function CalendarRangePicker<T extends DateValue>({
           </span>
           <DateInput
             slot='end'
-            className='flex px-2 py-2 bg-zinc-800 text-slate-100 rounded w-full data-[focus-visible]:ring data-[focus-visible]:ring-green-300 data-[focus-within]:ring data-[focus-within]:ring-green-300 '
+            className='flex w-full rounded border border-zinc-900 bg-slate-50 px-2 py-2 text-zinc-900 data-[focus-visible]:ring data-[focus-within]:ring data-[focus-visible]:ring-violet-800 data-[focus-within]:ring-violet-800 dark:border-zinc-700 dark:bg-zinc-800 dark:text-slate-100 dark:data-[focus-visible]:ring-green-300 dark:data-[focus-within]:ring-green-300'
           >
             {(segment) => (
               <DateSegment
                 segment={segment}
-                className='ml-1 rounded outline-none focus:bg-green-300 focus:text-zinc-900'
+                className='ml-1 rounded outline-none focus:bg-violet-300 focus:text-zinc-900 dark:focus:bg-green-300'
               />
             )}
           </DateInput>
-          <Button className='ml-4 text-slate-100 hover:opacity-50 outline-none data-[focus-visible]:ring data-[focus-visible]:ring-green-300 data-[pressed]:scale-95'>
+          <Button className='ml-4 text-zinc-900 outline-none hover:opacity-50 data-[pressed]:scale-95 data-[focus-visible]:ring data-[focus-visible]:ring-green-300 dark:text-slate-100'>
             <CalendarDaysIcon className='h-10 w-10' />
           </Button>
         </Group>
@@ -71,21 +80,18 @@ export function CalendarRangePicker<T extends DateValue>({
         <FieldError>{errorMessage}</FieldError>
         <Popover>
           <Dialog>
-            <RangeCalendar
-              className='mr-3 p-4 bg-zinc-800 text-slate-100 rounded-xl 
-          shadow-2xl'
-            >
-              <header className='flex items-center mb-4'>
+            <RangeCalendar className='mr-3 rounded-xl bg-slate-50 p-4 text-zinc-900 shadow-2xl dark:bg-zinc-800 dark:text-slate-100'>
+              <header className='mb-4 flex items-center'>
                 <Button
                   slot='previous'
-                  className='hover:opacity-50 outline-none data-[focus-visible]:ring data-[focus-visible]:ring-orange-300 data-[pressed]:scale-95'
+                  className='outline-none hover:opacity-50 data-[pressed]:scale-95 data-[focus-visible]:ring data-[focus-visible]:ring-orange-300'
                 >
                   <ChevronLeftIcon className='h-8 w-8' />
                 </Button>
                 <Heading className='flex-1 text-center' />
                 <Button
                   slot='next'
-                  className='hover:opacity-50 outline-none data-[focus-visible]:ring data-[focus-visible]:ring-orange-300 data-[pressed]:scale-95 disabled:invisible'
+                  className='outline-none hover:opacity-50 disabled:invisible data-[pressed]:scale-95 data-[focus-visible]:ring data-[focus-visible]:ring-orange-300'
                 >
                   <ChevronRightIcon className='h-8 w-8' />
                 </Button>
@@ -94,7 +100,7 @@ export function CalendarRangePicker<T extends DateValue>({
                 {(date) => (
                   <CalendarCell
                     date={date}
-                    className='w-10 h-10 cursor-default rounded flex items-center justify-center outline-none data-[focus-visible]:ring data-[focus-visible]:ring-orange-300 data-[disabled]:text-gray-500 hover:bg-green-300 hover:text-zinc-900  data-[disabled]:hover:bg-red-500 data-[outside-month]:hidden data-[selected]:bg-green-300 data-[selected]:text-zinc-900 data-[selected]:rounded-none data-[selection-start]:rounded-ss data-[selection-start]:rounded-es data-[selection-end]:rounded-se data-[selection-end]:rounded-ee'
+                    className='flex h-10 w-10 cursor-default items-center justify-center rounded outline-none hover:bg-violet-800 hover:text-slate-50 data-[outside-month]:hidden data-[selected]:rounded-none data-[selection-end]:rounded-ee data-[selection-end]:rounded-se data-[selection-start]:rounded-es data-[selection-start]:rounded-ss data-[selected]:bg-violet-800 data-[disabled]:text-gray-500 data-[selected]:text-slate-50 data-[focus-visible]:ring data-[focus-visible]:ring-orange-300 data-[disabled]:hover:bg-red-500 dark:hover:bg-green-300 dark:hover:text-zinc-900 dark:data-[selected]:bg-green-300 dark:data-[selected]:text-zinc-900'
                   />
                 )}
               </CalendarGrid>

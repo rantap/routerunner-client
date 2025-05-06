@@ -11,7 +11,10 @@ type Props = {
   setPage: (value: number | ((prev: number) => number)) => void;
 };
 const CardList = ({ results, page, setPage }: Props) => {
-  const { isPending, isError, error, data, isPlaceholderData } = useWorkouts(page, results);
+  const { isPending, isError, error, data, isPlaceholderData } = useWorkouts(
+    page,
+    results,
+  );
 
   return (
     <>
