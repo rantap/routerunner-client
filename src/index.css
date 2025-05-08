@@ -5,13 +5,27 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-weight: 400;
-  background-color: rgb(24 24 27);
   overflow-y: scroll;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-tap-highlight-color: transparent;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f8fafc;
+  color: #18181b;
+  --text-color: #18181b;
+  --border-color: #d1d5db;
+  --highlight-background: #5b21b6;
+  --border-color-pressed: #9ca3af;
+  --focus-ring-color: #2563eb;
+}
+.dark {
+  background-color: #18181b;
+  color: #f8fafc;
+  --text-color: #f8fafc;
+  --highlight-background: #86efac;
+  --field-background: #18181b;
+  --focus-ring-color: #3b82f6;
 }
 td {
   padding: 2px 0;
@@ -23,7 +37,6 @@ td {
 .stadiamaps-search-box .input-container input {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-weight: 400;
-  margin-top: 2rem;
   padding: 1rem 0 1rem 0.75rem;
   box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
 }

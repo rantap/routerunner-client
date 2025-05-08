@@ -7,6 +7,7 @@ import '@stadiamaps/maplibre-search-box/dist/style.css';
 import { MapLibreSearchControl } from '@stadiamaps/maplibre-search-box';
 import { formatDistance } from '../../utils/formatDistance';
 import { Button } from 'react-aria-components';
+import { HelpButton } from './Help/HelpButton';
 
 const token = import.meta.env.VITE_MAPBOX_TOKEN;
 
@@ -54,14 +55,16 @@ const Map: React.FC = () => {
 
   return (
     <div className='xl:flex'>
-      <div className='xl:w-4/5 m-auto'>
-        <div className='flex justify-evenly lg:justify-start lg:ml-8'>
+      <div className='m-auto dark:bg-zinc-800 xl:mx-10 xl:w-full xl:rounded-lg xl:bg-slate-50 xl:p-4 xl:shadow-md'>
+        <div className='flex justify-evenly lg:ml-8 lg:mt-4 lg:justify-start'>
           <Button
             onPress={() => {
               setProfile('walking');
             }}
-            className={`px-8 py-2 border-2 border-green-300 text-slate-100 rounded-full hover:bg-green-300 hover:text-zinc-900 outline-none data-[focus-visible]:ring data-[focus-visible]:ring-orange-300 lg:mr-4 ${
-              profile === 'walking' ? 'bg-green-300 text-zinc-900' : ''
+            className={`rounded-full border-2 border-zinc-900 px-8 py-2 outline-none hover:bg-violet-800 hover:text-slate-50 data-[focus-visible]:ring data-[focus-visible]:ring-orange-300 dark:border-slate-50 dark:hover:bg-green-300 dark:hover:text-zinc-800 lg:mr-4 ${
+              profile === 'walking'
+                ? 'border-violet-800 bg-violet-800 text-slate-50 dark:border-green-300 dark:bg-green-300 dark:text-zinc-900'
+                : 'text-zinc-900 dark:text-slate-50'
             }`}
           >
             Running
@@ -70,18 +73,25 @@ const Map: React.FC = () => {
             onPress={() => {
               setProfile('cycling');
             }}
-            className={`px-8 py-2 border-2 border-green-300 text-slate-100 rounded-full hover:bg-green-300 hover:text-zinc-900 outline-none data-[focus-visible]:ring data-[focus-visible]:ring-orange-300 lg:mr-4 ${
-              profile === 'cycling' ? 'bg-green-300 text-zinc-900' : ''
+            className={`rounded-full border-2 border-zinc-900 px-8 py-2 outline-none hover:bg-violet-800 hover:text-slate-50 data-[focus-visible]:ring data-[focus-visible]:ring-orange-300 dark:border-slate-50 dark:hover:bg-green-300 dark:hover:text-zinc-900 lg:mr-4 ${
+              profile === 'cycling'
+                ? 'border-violet-800 bg-violet-800 text-slate-50 dark:border-green-300 dark:bg-green-300 dark:text-zinc-900'
+                : 'text-zinc-900 dark:text-slate-50'
             }`}
           >
             Cycling
           </Button>
         </div>
-        <div className='mt-4 mb-16'>
-          <h1 className='absolute z-10 px-3 py-1 mx-2 bg-zinc-900 opacity-80 rounded-b-md text-slate-100 font-light'>
-            Total distance: {formatDistance(totalDistance)}
-          </h1>
-          <div ref={mapRef} className='h-[65vh] rounded-xl z-0' />
+        <div className='sm:mb-16 sm:mt-4 lg:mt-0'>
+          <div className='flex justify-center'>
+            <h1 className='rounded-b-md px-3 py-1'>
+              Total distance: {formatDistance(totalDistance)}
+            </h1>
+            <div className='hidden lg:block'>
+              <HelpButton />
+            </div>
+          </div>
+          <div ref={mapRef} className='z-0 h-[65vh] rounded-xl' />
         </div>
       </div>
     </div>
