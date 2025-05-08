@@ -5,7 +5,7 @@ export const ThemeToggle = () => {
 
   return (
     <button
-      className='text-2xl m-2 outline-none data-[focus-visible]:outline-2 data-[focus-visible]:outline-slate-100 data-[focus-visible]:outline-solid'
+      className='data-[focus-visible]:outline-solid m-2 text-2xl outline-none data-[focus-visible]:outline-2 data-[focus-visible]:outline-slate-100'
       onClick={() => {
         setDarkMode(!darkMode);
         if (darkMode) {
