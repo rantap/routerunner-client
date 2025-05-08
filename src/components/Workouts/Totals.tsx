@@ -19,7 +19,7 @@ const Totals = () => {
   return (
     <div className='mb-10 lg:mx-auto lg:mb-32 lg:w-1/2'>
       <>
-        <p>Workout dates</p>
+        <p className='ml-2 text-zinc-800 dark:text-slate-100'>Workout dates</p>
         <CalendarRangePicker
           value={date}
           onChange={setDate}
@@ -53,7 +53,7 @@ const Totals = () => {
         <div className='mt-6 text-center'>No results found!</div>
       ) : (
         <>
-          <div className='mt-8 text-center'>
+          <div className='mt-8 text-center text-zinc-800 dark:text-slate-100'>
             <span>{new Date(date.start.toString()).toDateString()}</span>
             <span> - </span>
             <span>{new Date(date.end.toString()).toDateString()}</span>

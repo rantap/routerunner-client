@@ -1,21 +1,28 @@
 import { NavLink } from 'react-router-dom';
-import { ThemeToggle } from './ThemeToggle/ThemeToggle';
+import { ThemeSwitch } from '../UI/ThemeSwitch/ThemeSwitch';
 import MobileMenu from './MobileMenu';
 
-const Navbar = () => {
+type Props = {
+  onToggle: (isDark: boolean) => void;
+  isDark: boolean;
+};
+
+const Navbar = ({ onToggle, isDark }: Props) => {
   return (
-    <nav className='z-50 sticky top-0 left-0 right-0 w-screen bg-slate-100 text-zinc-800 dark:bg-zinc-800 dark:text-slate-100 drop-shadow-lg sm:h-20 sm:flex sm:items-center sm:w-full'>
-      <div className='flex p-4 items-center justify-between'>
-        <h1 className='ml-2 text-3xl font-bold tracking-tighter sm:ml-10'>Routerunner</h1>
+    <nav className='sticky left-0 right-0 top-0 z-50 w-screen bg-slate-100 text-zinc-800 drop-shadow-lg dark:bg-zinc-800 dark:text-slate-100 sm:flex sm:h-20 sm:w-full sm:items-center'>
+      <div className='flex items-center justify-between p-4'>
+        <h1 className='ml-2 text-3xl font-bold tracking-tighter sm:ml-10'>
+          Routerunner
+        </h1>
         {/* MOBILE MENU */}
-        <MobileMenu />
+        <MobileMenu onToggle={onToggle} isDark={isDark} />
       </div>
       {/* DESKTOP MENU */}
-      <div className='hidden sm:flex sm:h-fit sm:static sm:ml-4'>
+      <div className='hidden sm:static sm:ml-4 sm:flex sm:h-fit'>
         <NavLink
           to='/'
           className={({ isActive }) =>
-            `block p-6 font-semibold border-b-2 border-transparent hover:border-b-zinc-800 dark:hover:border-b-slate-100  ${
+            `block border-b-2 border-transparent p-6 font-semibold hover:border-b-zinc-800 dark:hover:border-b-slate-100 ${
               isActive ? 'border-b-zinc-800 dark:border-b-slate-100' : ''
             }`
           }
@@ -25,14 +32,14 @@ const Navbar = () => {
         <NavLink
           to='/routeplanner'
           className={({ isActive }) =>
-            `block p-6 font-semibold border-b-2 border-transparent hover:border-b-zinc-800 dark:hover:border-b-slate-100 ${
+            `block border-b-2 border-transparent p-6 font-semibold hover:border-b-zinc-800 dark:hover:border-b-slate-100 ${
               isActive ? 'border-b-zinc-800 dark:border-b-slate-100' : ''
             }`
           }
         >
           Create a route
         </NavLink>
-        <ThemeToggle />
+        <ThemeSwitch onToggle={onToggle} isDark={isDark} />
       </div>
     </nav>
   );

@@ -3,7 +3,10 @@ import Totals from './Totals';
 import AddModal from './Modals/AddModal';
 import AllWorkouts from './AllWorkouts';
 
-const WorkoutTabs = () => {
+type Props = {
+  isDark: boolean;
+};
+const WorkoutTabs = ({ isDark }: Props) => {
   return (
     <Tabs className='text-slate-500 dark:text-slate-300'>
       <TabList
@@ -20,14 +23,14 @@ const WorkoutTabs = () => {
           className='border-2 border-solid border-transparent p-2 outline-none hover:cursor-pointer data-[selected]:border-b-violet-800 data-[selected]:text-zinc-900 data-[focus-visible]:ring data-[focus-visible]:ring-orange-300 dark:data-[selected]:border-b-green-300 dark:data-[selected]:text-slate-50'
           id='Totals'
         >
-          Totals
+          Total workouts
         </Tab>
       </TabList>
       <TabPanel id='All'>
-        <div className='mb-4 flex justify-center text-zinc-900 lg:hidden'>
+        <div className='mb-4 flex justify-center text-zinc-900 lg:justify-start'>
           <AddModal />
         </div>
-        <AllWorkouts />
+        <AllWorkouts isDark={isDark} />
       </TabPanel>
       <TabPanel id='Totals' className='mt-6'>
         <Totals />

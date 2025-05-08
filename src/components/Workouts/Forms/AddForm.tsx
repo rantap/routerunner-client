@@ -100,7 +100,7 @@ const AddForm = ({ setOpen }: Props) => {
         <FieldError className='ml-2 text-red-500' />
       </TextField>
       <Button
-        className='dark ml-4 mt-8 flex rounded-full bg-violet-800 px-6 py-3 text-slate-50 shadow-lg outline-none hover:bg-violet-900 data-[pressed]:scale-95 data-[focus-visible]:ring data-[focus-visible]:ring-orange-300 dark:bg-green-300 dark:text-zinc-900 dark:hover:bg-green-400'
+        className='ml-4 mt-8 flex rounded-full bg-violet-800 px-6 py-3 text-slate-50 shadow-lg outline-none hover:bg-violet-900 data-[pressed]:scale-95 data-[focus-visible]:ring data-[focus-visible]:ring-orange-300 dark:bg-green-300 dark:text-zinc-900 dark:hover:bg-green-400'
         type='submit'
       >
         <PlusIcon className='mr-1 h-6 w-6' />

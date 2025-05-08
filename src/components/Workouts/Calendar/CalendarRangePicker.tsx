@@ -45,7 +45,7 @@ export function CalendarRangePicker<T extends DateValue>({
         {...props}
         className='group flex w-full flex-col gap-1 text-zinc-900 data-[focus-ring]:outline-green-300'
       >
-        <Label className='ml-6 bg-zinc-800 dark:text-slate-100'>{label}</Label>
+        <Label>{label}</Label>
         <Group className='text-zinc-900justify-center mb-2 flex focus:ring focus:ring-green-300'>
           <DateInput
             slot='start'

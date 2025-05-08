@@ -16,13 +16,13 @@ interface Props {
 const TotalsTable = ({ totals }: Props) => {
   return (
     <Table className='mt-4 w-full' aria-label='Workouts'>
-      <TableHeader className='border-b border-zinc-700 bg-transparent text-center'>
+      <TableHeader className='border-b border-zinc-700 bg-transparent text-center text-zinc-800 dark:text-slate-100'>
         <Column isRowHeader>Type</Column>
         <Column>Count</Column>
         <Column>Distance</Column>
         <Column>Duration</Column>
       </TableHeader>
-      <TableBody items={totals}>
+      <TableBody items={totals} className={'text-zinc-800 dark:text-slate-100'}>
         {(total) => (
           <Row id={total.type} className='border-b border-zinc-700 text-center'>
             <Cell className='py-2'>{total.type}</Cell>

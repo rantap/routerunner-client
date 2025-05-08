@@ -11,6 +11,21 @@
   -webkit-tap-highlight-color: transparent;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f8fafc;
+  color: #18181b;
+  --text-color: #18181b;
+  --border-color: #d1d5db;
+  --highlight-background: #5b21b6;
+  --border-color-pressed: #9ca3af;
+  --focus-ring-color: #2563eb;
+}
+.dark {
+  background-color: #18181b;
+  color: #f8fafc;
+  --text-color: #f8fafc;
+  --highlight-background: #86efac;
+  --field-background: #18181b;
+  --focus-ring-color: #3b82f6;
 }
 td {
   padding: 2px 0;

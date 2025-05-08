@@ -3,8 +3,10 @@ import Chart from './Charts/Chart';
 import { useState } from 'react';
 import { useWorkouts } from '../../hooks/useWorkouts';
 import { Spinner } from '../UI/Spinner';
-
-const AllWorkouts = () => {
+type Props = {
+  isDark: boolean;
+};
+const AllWorkouts = ({ isDark }: Props) => {
   const [page, setPage] = useState<number>(1);
   const results: number = 5;
   const { isPending, data } = useWorkouts(page, results);
@@ -22,8 +24,8 @@ const AllWorkouts = () => {
       <div className='lg:w-2/5'>
         <CardList results={results} page={page} setPage={setPage} />
       </div>
-      <div className='mt-8 w-full rounded-lg bg-slate-50 p-4 shadow-md dark:bg-zinc-800 lg:w-3/5'>
-        <Chart data={data} />
+      <div className='w-full rounded-lg bg-slate-50 p-4 shadow-md dark:bg-zinc-800 lg:w-3/5'>
+        <Chart data={data} isDark={isDark} />
       </div>
     </div>
   );
