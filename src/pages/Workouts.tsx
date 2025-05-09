@@ -4,7 +4,7 @@ type Props = {
 };
 const Workouts = ({ isDark }: Props) => {
   return (
-    <div className='mb-10 xl:mx-10'>
+    <div className='mb-10 h-full xl:mx-10'>
       <div>
         <h1 className='mt-6 text-center text-2xl font-bold tracking-tighter lg:hidden'>
           My workouts
@@ -15,7 +15,7 @@ const Workouts = ({ isDark }: Props) => {
           <Tabs isDark={isDark} />
         </div>
       </div>
-      <div className='mx-8 hidden flex-col gap-16 lg:mt-8 lg:flex'>
+      <div className='mx-8 hidden flex-col gap-16 lg:mt-6 lg:flex'>
         <div>
           <Tabs isDark={isDark} />
         </div>

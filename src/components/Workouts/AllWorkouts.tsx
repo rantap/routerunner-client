@@ -21,10 +21,10 @@ const AllWorkouts = ({ isDark }: Props) => {
   }
   return (
     <div className='flex-row gap-16 lg:flex'>
-      <div className='lg:w-2/5'>
+      <div className='h-full lg:w-2/5'>
         <CardList results={results} page={page} setPage={setPage} />
       </div>
-      <div className='w-full rounded-lg bg-slate-50 shadow-md dark:bg-zinc-800 lg:w-3/5 lg:p-4'>
+      <div className='h-full w-full rounded-lg bg-slate-50 shadow-md dark:bg-zinc-800 lg:w-3/5 lg:p-4'>
         <Chart data={data} isDark={isDark} />
       </div>
     </div>
