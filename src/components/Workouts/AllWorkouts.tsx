@@ -24,7 +24,7 @@ const AllWorkouts = ({ isDark }: Props) => {
       <div className='lg:w-2/5'>
         <CardList results={results} page={page} setPage={setPage} />
       </div>
-      <div className='w-full rounded-lg bg-slate-50 p-4 shadow-md dark:bg-zinc-800 lg:w-3/5'>
+      <div className='w-full rounded-lg bg-slate-50 shadow-md dark:bg-zinc-800 lg:w-3/5 lg:p-4'>
         <Chart data={data} isDark={isDark} />
       </div>
     </div>

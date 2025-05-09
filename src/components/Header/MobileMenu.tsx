@@ -38,14 +38,14 @@ const MobileMenu = ({ onToggle, isDark }: Props) => {
             <NavLink
               to='/'
               onClick={() => setOpen(false)}
-              className='focus-visible:outline-solid mt-1 block px-6 py-2 outline-none hover:text-green-300 focus-visible:outline-2 focus-visible:outline-slate-100'
+              className='focus-visible:outline-solid mt-1 block px-6 py-2 outline-none hover:text-violet-800 focus-visible:outline-2 focus-visible:outline-slate-100 dark:hover:text-green-300'
             >
               My workouts
             </NavLink>
             <NavLink
               to='/routeplanner'
               onClick={() => setOpen(false)}
-              className='focus-visible:outline-solid mt-2 block px-6 py-2 outline-none hover:text-green-300 focus-visible:outline-2 focus-visible:outline-slate-100'
+              className='focus-visible:outline-solid mt-2 block px-6 py-2 outline-none hover:text-violet-800 focus-visible:outline-2 focus-visible:outline-slate-100 dark:hover:text-green-300'
             >
               Create a route
             </NavLink>

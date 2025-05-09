@@ -37,12 +37,10 @@ const Chart = ({ data, isDark }: Props) => {
 
   return (
     <div className='h-[200px] w-full lg:h-[400px]'>
-      <ResponsiveContainer
-        minWidth='0'
-        minHeight='undefined'
-        aspect={undefined}
-      >
+      <ResponsiveContainer minWidth='100%' minHeight='100%'>
         <AreaChart
+          width={730}
+          height={250}
           data={workouts}
           margin={{
             top: 40,
