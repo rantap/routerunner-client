@@ -12,6 +12,7 @@ import { HelpButton } from './Help/HelpButton';
 const token = import.meta.env.VITE_MAPBOX_TOKEN;
 
 const Map: React.FC = () => {
+  const directionsRef = useRef<MapLibreGlDirections | null>(null);
   const mapRef = useRef<HTMLDivElement | null>(null);
   const [profile, setProfile] = useState<string>('walking');
   const [totalDistance, setTotalDistance] = useState<number>(0);
@@ -39,19 +40,48 @@ const Map: React.FC = () => {
           access_token: token,
         },
       });
+      directions.interactive = true;
+      directionsRef.current = directions;
+
       directions.on('fetchroutesend', (ev) => {
-        setTotalDistance(ev.data?.routes[0].distance as number);
+        setTotalDistance((ev.data?.routes[0]?.distance as number) | 0);
       });
       directions.on('removewaypoint', () => {
-        if (directions.waypoints.length < 2) {
-          setTotalDistance(0);
-        }
+        if (directions.waypoints.length < 2) setTotalDistance(0);
       });
-      directions.interactive = true;
     });
     // Reset distance when profile changes
     setTotalDistance(0);
   }, [profile]);
+
+  const generateRoute = async (desiredLength = 5000) => {
+    const origin = [23.8485436, 61.4508978];
+    const numberOfPoints = 10;
+    const radius = desiredLength / (2 * Math.PI * 111_000); // degrees per meter
+
+    const waypoints = Array.from({ length: numberOfPoints }, (_, i) => {
+      const angle = (i / numberOfPoints) * 2 * Math.PI + Math.random() * 0.2;
+      return [
+        origin[0] + radius * Math.cos(angle),
+        origin[1] + radius * Math.sin(angle),
+      ];
+    });
+
+    const coords = [...waypoints, waypoints[0]];
+
+    const directions = directionsRef.current;
+    if (!directions) return;
+
+    // Clear existing waypoints
+    directions.clear();
+
+    // Add waypoints to directions
+    coords.forEach(([lon, lat]) => {
+      directions.addWaypoint([lon, lat]);
+    });
+
+    setTotalDistance(0); // reset until fetchroutesend event updates it
+  };
 
   return (
     <div className='xl:flex'>
@@ -80,6 +110,12 @@ const Map: React.FC = () => {
             }`}
           >
             Cycling
+          </Button>
+          <Button
+            onPress={() => generateRoute(3000)}
+            className='rounded-full border-2 px-6 py-2 outline-none hover:bg-orange-600 hover:text-white data-[focus-visible]:ring data-[focus-visible]:ring-orange-300 dark:hover:bg-orange-400 dark:hover:text-zinc-900 lg:ml-4'
+          >
+            Generate Route
           </Button>
         </div>
         <div className='sm:mb-16 sm:mt-4 lg:mt-0'>

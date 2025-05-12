@@ -27,17 +27,17 @@ const Navbar = ({ onToggle, isDark }: Props) => {
             }`
           }
         >
-          My workouts
+          Create a route
         </NavLink>
         <NavLink
-          to='/routeplanner'
+          to='/workouts'
           className={({ isActive }) =>
             `block border-b-2 border-transparent p-6 font-semibold hover:border-b-zinc-800 dark:hover:border-b-slate-100 ${
               isActive ? 'border-b-zinc-800 dark:border-b-slate-100' : ''
             }`
           }
         >
-          Create a route
+          My workouts
         </NavLink>
         <ThemeSwitch onToggle={onToggle} isDark={isDark} />
       </div>

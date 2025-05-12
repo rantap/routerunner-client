@@ -24,8 +24,8 @@ const App = () => {
       <BrowserRouter>
         <Navbar onToggle={handleToggle} isDark={isDark} />
         <Routes>
-          <Route path='/' element={<Workouts isDark={isDark} />} />
-          <Route path='/routeplanner' element={<Routeplanner />} />
+          <Route path='/' element={<Routeplanner />} />
+          <Route path='/workouts' element={<Workouts isDark={isDark} />} />
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>
